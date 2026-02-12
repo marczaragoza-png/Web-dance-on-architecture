@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D-o-A | Dance on Architecture</title>
+    <title>D-o-A | Dancing on Architecture</title>
     
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22 font-family=%22Helvetica%22 font-weight=%22bold%22>D</text></svg>">
 
@@ -19,14 +19,13 @@
             -webkit-font-smoothing: grayscale;
         }
 
-        /* Selector de idioma */
         .lang-switch {
-            position: fixed;
+            position: absolute;
             top: 40px;
             right: 40px;
             display: flex;
             gap: 15px;
-            z-index: 9999;
+            z-index: 100;
         }
 
         .lang-btn {
@@ -46,21 +45,13 @@
             font-weight: 700;
         }
 
-        /* Sistema de visibilidad infalible */
+        /* Estilo de visibilidad garantizada */
         .lang-content {
-            display: block; /* Siempre bloque */
-            height: 0;
-            overflow: hidden;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
+            display: none;
         }
 
-        .lang-content.visible {
-            height: auto;
-            opacity: 1;
-            pointer-events: auto;
-            margin-bottom: 0;
+        .lang-content.active {
+            display: block !important;
         }
 
         header { margin-bottom: 120px; }
@@ -139,18 +130,18 @@
 <body>
 
     <nav class="lang-switch">
-        <button id="btn-en" class="lang-btn" onclick="changeLang('en')">EN</button>
-        <button id="btn-es" class="lang-btn" onclick="changeLang('es')">ES</button>
-        <button id="btn-ca" class="lang-btn" onclick="changeLang('ca')">CA</button>
+        <button id="btn-en" class="lang-btn active" onclick="setLang('en')">EN</button>
+        <button id="btn-es" class="lang-btn" onclick="setLang('es')">ES</button>
+        <button id="btn-ca" class="lang-btn" onclick="setLang('ca')">CA</button>
     </nav>
 
     <header>
-        <h1>Dance on Architecture</h1>
+        <h1>Dancing on Architecture</h1>
     </header>
 
     <div class="content">
         
-        <div id="lang-en" class="lang-content visible">
+        <div id="lang-en" class="lang-content active">
             <section class="manifesto">
                 Architecture is not the tectonic mass, but the interval. A latent system that finds its ontological validation only through the motor impulse of the body.
             </section>
@@ -199,22 +190,18 @@
     </div>
 
     <script>
-        function changeLang(langCode) {
-            // Eliminar clases de visibilidad
-            document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('visible'));
+        function setLang(lang) {
+            // Ocultar contenidos
+            document.querySelectorAll('.lang-content').forEach(div => div.classList.remove('active'));
+            // Quitar clase active de botones
             document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-
-            // Activar idioma seleccionado
-            document.getElementById('lang-' + langCode).classList.add('visible');
-            document.getElementById('btn-' + langCode).classList.add('active');
             
-            document.documentElement.lang = langCode;
+            // Activar seleccionados
+            document.getElementById('lang-' + lang).classList.add('active');
+            document.getElementById('btn-' + lang).classList.add('active');
+            
+            document.documentElement.lang = lang;
         }
-
-        // Forzar arranque en EN
-        window.addEventListener('DOMContentLoaded', () => {
-            changeLang('en');
-        });
     </script>
 </body>
 </html>
