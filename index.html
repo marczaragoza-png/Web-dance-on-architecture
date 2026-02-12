@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D-o-A | Dance on Architecture</title>
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22 font-family=%22Helvetica%22 font-weight=%22bold%22>D</text></svg>">
+
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #000000;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            padding: 80px 40px;
+            max-width: 900px;
+            margin: 0;
+            -webkit-font-smoothing: grayscale;
+        }
+
+        /* Selector de idioma */
+        .lang-switch {
+            position: fixed;
+            top: 40px;
+            right: 40px;
+            display: flex;
+            gap: 15px;
+            z-index: 9999;
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            padding: 0;
+            color: #ccc;
+            transition: color 0.2s ease;
+        }
+
+        .lang-btn.active {
+            color: #000;
+            font-weight: 700;
+        }
+
+        /* Sistema de visibilidad infalible */
+        .lang-content {
+            display: block; /* Siempre bloque */
+            height: 0;
+            overflow: hidden;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .lang-content.visible {
+            height: auto;
+            opacity: 1;
+            pointer-events: auto;
+            margin-bottom: 0;
+        }
+
+        header { margin-bottom: 120px; }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin: 0;
+        }
+
+        .content { max-width: 650px; }
+
+        .manifesto {
+            font-size: 1.8rem;
+            font-weight: 500;
+            line-height: 1.3;
+            letter-spacing: -0.03em;
+            margin-bottom: 60px;
+            text-wrap: balance;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            margin-bottom: 80px;
+            color: #000;
+        }
+
+        .description p { margin-bottom: 24px; }
+        strong { font-weight: 700; }
+
+        .links-container { margin-top: 100px; }
+        .label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: #888;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .links-group { margin-bottom: 40px; }
+        .links-container a {
+            display: block;
+            color: #000;
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 10px;
+            transition: opacity 0.2s ease;
+        }
+        .links-container a:hover { opacity: 0.4; }
+
+        footer { margin-top: 120px; }
+        .contact-link {
+            font-size: 0.9rem;
+            color: #000;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-bottom: 1px solid #000;
+            padding-bottom: 2px;
+            transition: opacity 0.2s ease;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 40px 20px; }
+            .lang-switch { top: 20px; right: 20px; }
+            .manifesto { font-size: 1.4rem; }
+            header { margin-bottom: 60px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="lang-switch">
+        <button id="btn-en" class="lang-btn" onclick="changeLang('en')">EN</button>
+        <button id="btn-es" class="lang-btn" onclick="changeLang('es')">ES</button>
+        <button id="btn-ca" class="lang-btn" onclick="changeLang('ca')">CA</button>
+    </nav>
+
+    <header>
+        <h1>Dance on Architecture</h1>
+    </header>
+
+    <div class="content">
+        
+        <div id="lang-en" class="lang-content visible">
+            <section class="manifesto">
+                Architecture is not the tectonic mass, but the interval. A latent system that finds its ontological validation only through the motor impulse of the body.
+            </section>
+            <section class="description">
+                <p>Directed by <strong>Marc Zaragoza</strong>, the collective operates at the threshold where theoretical speculation converges with technical rigor. The project manifests through the conceptual subversion of <strong>Poética Beligerante</strong> (with Marga Ruiz), the structural morphology of <strong>m-i-r-a arquitectura</strong> (Dori Sadan, Niccolò Marini, and Marga Ruiz), and the kinetic grammar of <strong>Wonderground</strong> (Tom Weksler and Roser Tutusaus), whose choreographic systems function as a live infrastructure governing the tempo and flux of space.</p>
+                <p>Currently, in collaboration with filmmaker <strong>Ignasi Castañé</strong>, we are developing a series of documentary screendance works. In these pieces, the body does not merely inhabit the void; it completes the architectural intent, drafting a cartographical record of the invisible.</p>
+            </section>
+        </div>
+
+        <div id="lang-es" class="lang-content">
+            <section class="manifesto">
+                La arquitectura no es la masa tectónica, sino el intervalo. Un sistema latente cuya validación ontológica solo ocurre mediante el impulso motriz del cuerpo.
+            </section>
+            <section class="description">
+                <p>Coordinado por <strong>Marc Zaragoza</strong>, el colectivo habita el umbral donde la especulación teórica converge con el rigor técnico. El proyecto se manifiesta a través de la subversión conceptual de <strong>Poética Beligerante</strong> (junto a Marga Ruiz), la morfología estructural de <strong>m-i-r-a arquitectura</strong> (Dori Sadan, Niccolò Marini y Marga Ruiz) y la gramática cinética de <strong>Wonderground</strong> (Tom Weksler y Roser Tutusaus), cuyas coreografías operan como una infraestructura viva que regula el tempo y el flujo del espacio.</p>
+                <p>En su deriva actual, junto al cineasta <strong>Ignasi Castañé</strong>, desarrollamos una serie de piezas de videodanza documental. En ellas, el cuerpo no solo ocupa el vacío, sino que completa la intención arquitectónica, trazando la cartografía de lo invisible.</p>
+            </section>
+        </div>
+
+        <div id="lang-ca" class="lang-content">
+            <section class="manifesto">
+                L'arquitectura no és la massa tectònica, sinó l'interval. Un sistema latent la validació ontològica del qual només s'esdevé mitjançant l'impuls motriu del cos.
+            </section>
+            <section class="description">
+                <p>Coordinat per <strong>Marc Zaragoza</strong>, el col·lectiu habita l'umbral on l'especulació teòrica convergeix amb el rigor tècnic. El projecte es manifesta a través de la subversió conceptual de <strong>Poética Beligerante</strong> (amb Marga Ruiz), la morfologia estructural de <strong>m-i-r-a arquitectura</strong> (Dori Sadan, Niccolò Marini i Marga Ruiz) i la gramàtica cinètica de <strong>Wonderground</strong> (Tom Weksler i Roser Tutusaus), les coreografies dels quals operen com una infraestructura viva que regula el tempo i el flux de l'espai.</p>
+                <p>En la deriva actual, juntament amb el cineasta <strong>Ignasi Castañé</strong>, desenvolupem una sèrie de peces de videodansa documental. En elles, el cos no només ocupa el buit, sinó que completa la intenció arquitectònica, traçant la cartografia de l'invisible.</p>
+            </section>
+        </div>
+
+        <nav class="links-container">
+            <div class="links-group">
+                <span class="label">Project Team</span>
+                <a href="https://www.m-i-r-a.com/" target="_blank">m-i-r-a arquitectura</a>
+                <a href="https://www.poeticabeligerante.org/" target="_blank">Poética Beligerante</a>
+                <a href="https://www.wondergroundcompany.com/" target="_blank">Wonderground</a>
+            </div>
+            <div class="links-group">
+                <span class="label">Collaborators</span>
+                <a href="https://www.instagram.com/igni_cligbcn/?hl=en" target="_blank">Ignasi Castañé</a>
+            </div>
+        </nav>
+
+        <footer>
+            <a href="mailto:marc.zaragoza@m-i-r-a.com" class="contact-link">Contact</a>
+        </footer>
+    </div>
+
+    <script>
+        function changeLang(langCode) {
+            // Eliminar clases de visibilidad
+            document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('visible'));
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+
+            // Activar idioma seleccionado
+            document.getElementById('lang-' + langCode).classList.add('visible');
+            document.getElementById('btn-' + langCode).classList.add('active');
+            
+            document.documentElement.lang = langCode;
+        }
+
+        // Forzar arranque en EN
+        window.addEventListener('DOMContentLoaded', () => {
+            changeLang('en');
+        });
+    </script>
+</body>
+</html>
