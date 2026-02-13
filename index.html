@@ -22,7 +22,7 @@
         body {
             background: var(--bg);
             color: var(--black);
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', 'Noto Sans SC', 'Noto Sans JP', sans-serif;
             font-size: var(--size-body); 
             line-height: 1.5;
             padding: 64px 48px;
@@ -59,9 +59,12 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.1em;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
         }
 
-        .lang-switch span { margin-left: 16px; cursor: pointer; color: var(--gray); transition: 0.2s; }
+        .lang-switch span { cursor: pointer; color: var(--gray); transition: 0.2s; }
         .lang-switch span.active { color: var(--black); text-decoration: underline; text-underline-offset: 4px; }
 
         .hero-video {
@@ -87,7 +90,6 @@
         .description-content p { margin-bottom: 24px; }
         .description-content strong { font-weight: 600; }
 
-        /* --- GALLERY: NO CROP --- */
         .archive-grid {
             grid-column: 1 / span 12;
             display: flex;
@@ -99,23 +101,10 @@
             margin-bottom: 120px;
         }
 
-        .plate {
-            flex: 1 1 calc(25% - var(--grid-gap));
-            min-width: 250px;
-        }
-
-        .plate-img { width: 100%; margin-bottom: 16px; }
+        .plate { flex: 1 1 calc(25% - var(--grid-gap)); min-width: 250px; }
         .plate-img img { width: 100%; height: auto; display: block; filter: grayscale(100%); transition: 0.5s; }
         .plate:hover img { filter: grayscale(0%); }
-
-        .plate-label {
-            font-size: var(--size-meta);
-            font-weight: 600;
-            text-transform: uppercase;
-            color: var(--gray);
-            border-top: 1px solid #eee;
-            padding-top: 8px;
-        }
+        .plate-label { font-size: var(--size-meta); font-weight: 600; text-transform: uppercase; color: var(--gray); border-top: 1px solid #eee; padding-top: 8px; }
 
         footer {
             grid-column: 1 / span 12;
@@ -134,7 +123,6 @@
             .grid { display: block; }
             .description-content { width: 100%; }
             .plate { flex: 1 1 100%; }
-            footer { grid-template-columns: 1fr 1fr; row-gap: 32px; }
         }
     </style>
 </head>
@@ -147,6 +135,10 @@
                 <span onclick="setLang('en')" class="active">EN</span>
                 <span onclick="setLang('es')">ES</span>
                 <span onclick="setLang('ca')">CA</span>
+                <span onclick="setLang('fr')">FR</span>
+                <span onclick="setLang('de')">DE</span>
+                <span onclick="setLang('zh')">ZH</span>
+                <span onclick="setLang('jp')">JP</span>
             </nav>
         </header>
 
@@ -159,6 +151,10 @@
         <div id="lead-en" class="manifesto-text">Architecture is not the tectonic mass, but the interval. A latent system that finds its ontological validation only through the motor impulse of the body.</div>
         <div id="lead-es" class="manifesto-text hidden">La arquitectura no es la masa tectónica, sino el intervalo. Un sistema latente que encuentra su validación ontológica solo a través del impulso motor del cuerpo.</div>
         <div id="lead-ca" class="manifesto-text hidden">L'arquitectura no és la massa tectònica, sinó l'interval. Un sistema latent que troba la seva validació ontològica només a través de l'impuls motor del cos.</div>
+        <div id="lead-fr" class="manifesto-text hidden">L'architecture n'est pas la masse tectonique, mais l'intervalle. Un système latent qui ne trouve sa validation ontologique qu'à travers l'impulsion motrice du corps.</div>
+        <div id="lead-de" class="manifesto-text hidden">Architektur ist nicht die tektonische Masse, sondern das Intervall. Ein latentes System, das seine ontologische Bestätigung erst durch den motorischen Impuls des Körpers findet.</div>
+        <div id="lead-zh" class="manifesto-text hidden">建筑并非构造的实体，而是其间的空隙。这一潜在系统唯有通过身体的运动冲动，方能获得其存在论上的确证。</div>
+        <div id="lead-jp" class="manifesto-text hidden">建築とは構造物そのものではなく、その「間」にある。身体の運動衝動を通じて初めて、その存在論的な正当性を見出す潜在的なシステムである。</div>
 
         <div id="text-en" class="description-content">
             <p>Conceived and coordinated by <strong>Marc Zaragoza</strong>, the collective operates at the threshold where theoretical speculation converges with technical rigor. The intervention is fundamentally activated by the kinetic grammar of <strong>Wonderground</strong> (Tom Weksler and Roser Tutusaus). Their choreographic systems function as a live infrastructure, utilizing high-velocity precision to govern the tempo and flux of the void.</p>
@@ -166,35 +162,23 @@
             <p>Currently, in collaboration with filmmaker <strong>Ignasi Castañé</strong>, the project develops a series of documentary screendance works in spaces under construction (WIP), drafting a cartographical record of the invisible.</p>
         </div>
 
-        <div id="text-es" class="description-content hidden">
-            <p>Ideado e impulsado por <strong>Marc Zaragoza</strong>, el colectivo opera en el umbral donde la especulación teórica converge con el rigor técnico. La intervención es activada fundamentalmente por la gramática cinética de <strong>Wonderground</strong> (Tom Weksler y Roser Tutusaus). Sus sistemas coreográficos funcionan como una infraestructura viva que utiliza la precisión de alta velocidad para gobernar el flujo del vacío.</p>
-            <p>Esta fuerza cinética se aloja en los entornos tectónicos definidos por <strong>m-i-r-a arquitectura</strong> (Dori Sadan, Niccolò Marini y Marga Ruiz). El proyecto nace de esta sinergia horizontal, apoyada por la subversión conceptual de <strong>Poética Beligerante</strong> (con Marga Ruiz), reivindicando el cuerpo como agente estructural.</p>
-            <p>Actualmente, en colaboración con el cineasta <strong>Ignasi Castañé</strong>, el proyecto desarrolla una serie de trabajos de screendance documental en espacios en construcción, trazando un registro cartográfico de lo invisible.</p>
+        <div id="text-zh" class="description-content hidden">
+            <p>由 <strong>Marc Zaragoza</strong> 构思并协调，该集体活跃于理论思辨与技术严谨性相融合的边缘。干预行动主要由 <strong>Wonderground</strong>（Tom Weksler 与 Roser Tutusaus）的动力语法激活。他们的编舞系统作为一种动态基础设施，利用高速精准性来管控空间的节奏与流动。</p>
+            <p>这种动力存在于由 <strong>m-i-r-a arquitectura</strong>（Dori Sadan、Niccolò Marini 与 Marga Ruiz）定义的构造环境中。他们的实践勾勒出物质与空间具有同等分量的构造领域。该项目诞生于这种水平协作，并辅以 <strong>Poética Beligerante</strong> 的概念颠覆，将身体重塑为主动的结构媒介。</p>
+            <p>目前，与电影制作人 <strong>Ignasi Castañé</strong> 合作，该项目正在开发一系列关于施工中空间的纪录影像作品，旨在通过“进行中”的视角绘制不可见空间的制图记录。</p>
         </div>
 
-        <div id="text-ca" class="description-content hidden">
-            <p>Ideat i impulsat per <strong>Marc Zaragoza</strong>, el col·lectiu opera a l'umbral on l'especulació teòrica convergeix amb el rigor tècnic. La intervenció és activada fonamentalment per la gramàtica cinètica de <strong>Wonderground</strong> (Tom Weksler i Roser Tutusaus). Els seus sistemes coreogràfics funcionen com una infraestructura viva que governa el flux del buit.</p>
-            <p>Aquesta força cinètica s'allotja en els entorns tectònics definits per <strong>m-i-r-a arquitectura</strong> (Dori Sadan, Niccolò Marini i Marga Ruiz). El projecte neix d'aquesta sinergia horitzontal, amb la subversió conceptual de <strong>Poética Beligerante</strong> (amb Marga Ruiz), reivindicant el cos com a agent estructural.</p>
-            <p>Actualment, amb el cineasta <strong>Ignasi Castañé</strong>, el projecte desenvolupa treballs de screendance documental en espais en construcció, traçant un registre cartogràfic de l'invisible.</p>
+        <div id="text-jp" class="description-content hidden">
+            <p><strong>Marc Zaragoza</strong> によって構想・調整されたこのコレクティブは、理論的思索と技術的厳格さが交差する境界で活動しています。その介入は、主に <strong>Wonderground</strong> (Tom Weksler と Roser Tutusaus) のキネティックな文法によって活性化されます。彼らの振付システムは、高速な精度を用いて空隙のテンポと流れを支配する、生きたインフラとして機能します。</p>
+            <p>この動力は、<strong>m-i-r-a arquitectura</strong> (Dori Sadan, Niccolò Marini, Marga Ruiz) によって定義されたテクトニックな環境の中に収められています。本プロジェクトは、身体を能動的な構造的エージェントとして再定義する <strong>Poética Beligerante</strong> の概念的転覆に支えられ、水平的なシナジーから生まれます。</p>
+            <p>現在、映像作家の <strong>Ignasi Castañé</strong> との協力により、建設中の空間を舞台にしたドキュメンタリー・スクリーンダンス作品を制作中であり、進行中の視点から「見えないもの」の地図記録を試みています。</p>
         </div>
 
         <section class="archive-grid">
-            <div class="plate">
-                <div class="plate-img"><img src="Dance.on.architecture-PIC-by-Igni-Castanye.jpg"></div>
-                <p class="plate-label">Plate 01 / Context</p>
-            </div>
-            <div class="plate">
-                <div class="plate-img"><img src="IMG_20250928_120952.jpg"></div>
-                <p class="plate-label">Plate 02 / Tension</p>
-            </div>
-            <div class="plate">
-                <div class="plate-img"><img src="frame_069.jpg"></div>
-                <p class="plate-label">Plate 03 / Detail</p>
-            </div>
-            <div class="plate">
-                <div class="plate-img"><img src="frame_019.jpg"></div>
-                <p class="plate-label">Plate 04 / Alignment</p>
-            </div>
+            <div class="plate"><div class="plate-img"><img src="Dance.on.architecture-PIC-by-Igni-Castanye.jpg"></div><p class="plate-label">Plate 01 / Context</p></div>
+            <div class="plate"><div class="plate-img"><img src="IMG_20250928_120952.jpg"></div><p class="plate-label">Plate 02 / Tension</p></div>
+            <div class="plate"><div class="plate-img"><img src="frame_069.jpg"></div><p class="plate-label">Plate 03 / Detail</p></div>
+            <div class="plate"><div class="plate-img"><img src="frame_019.jpg"></div><p class="plate-label">Plate 04 / Alignment</p></div>
         </section>
 
         <footer>
@@ -210,7 +194,8 @@
             document.querySelectorAll('[id^="lead-"], [id^="text-"]').forEach(el => el.classList.add('hidden'));
             document.querySelectorAll('.lang-switch span').forEach(s => s.classList.remove('active'));
             document.getElementById('lead-' + lang).classList.remove('hidden');
-            document.getElementById('text-' + lang).classList.remove('hidden');
+            const content = document.getElementById('text-' + lang);
+            if(content) content.classList.remove('hidden');
             event.target.classList.add('active');
         }
     </script>
