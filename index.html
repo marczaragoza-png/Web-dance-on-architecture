@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DANCING ON ARCHITECTURE</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #ffffff;
@@ -90,6 +91,7 @@
         .description-content p { margin-bottom: 24px; }
         .description-content strong { font-weight: 600; }
 
+        /* --- GALLERY: NO CROP --- */
         .archive-grid {
             grid-column: 1 / span 12;
             display: flex;
@@ -123,6 +125,7 @@
             .grid { display: block; }
             .description-content { width: 100%; }
             .plate { flex: 1 1 100%; }
+            footer { grid-template-columns: 1fr 1fr; row-gap: 32px; }
         }
     </style>
 </head>
@@ -162,16 +165,40 @@
             <p>Currently, in collaboration with filmmaker <strong>Ignasi Castañé</strong>, the project develops a series of documentary screendance works in spaces under construction (WIP), drafting a cartographical record of the invisible.</p>
         </div>
 
+        <div id="text-es" class="description-content hidden">
+            <p>Ideado y coordinado por <strong>Marc Zaragoza</strong>, el colectivo opera en el umbral donde la especulación teórica converge con el rigor técnico. La intervención es activada fundamentalmente por la gramática cinética de <strong>Wonderground</strong> (Tom Weksler y Roser Tutusaus). Sus sistemas coreográficos funcionan como una infraestructura viva que utiliza la precisión de alta velocidad para gobernar el flujo del vacío.</p>
+            <p>Esta fuerza cinética se aloja en los entornos tectónicos definidos por <strong>m-i-r-a arquitectura</strong> (Dori Sadan, Niccolò Marini y Marga Ruiz). El proyecto nace de esta sinergia horizontal, apoyada por la subversión conceptual de <strong>Poética Beligerante</strong> (con Marga Ruiz), reivindicando el cuerpo como agente estructural activo.</p>
+            <p>Actualmente, en colaboración con el cineasta <strong>Ignasi Castañé</strong>, el proyecto desarrolla una serie de trabajos de screendance documental en espacios en construcción, trazando un registro cartográfico de lo invisible.</p>
+        </div>
+
+        <div id="text-ca" class="description-content hidden">
+            <p>Ideat i coordinat per <strong>Marc Zaragoza</strong>, el col·lectiu opera a l'umbral on l'especulació teòrica convergeix amb el rigor tècnic. La intervenció és activada fonamentalment per la gramàtica cinètica de <strong>Wonderground</strong> (Tom Weksler i Roser Tutusaus). Els seus sistemes coreogràfics funcionen com una infraestructura viva que utilitza la precisió d'alta velocitat per governar el flux del buit.</p>
+            <p>Aquesta força cinètica s'allotja en els entorns tectònics definits per <strong>m-i-r-a arquitectura</strong> (Dori Sadan, Niccolò Marini i Marga Ruiz). El projecte neix d'aquesta sinergia horitzontal, amb la subversió conceptual de <strong>Poética Beligerante</strong> (amb Marga Ruiz), reivindicant el cos com a agent estructural actiu.</p>
+            <p>Actualment, en col·laboració amb el cineasta <strong>Ignasi Castañé</strong>, el projecte desenvolupa una sèrie de treballs de screendance documental en espais en construcció, traçant un registre cartogràfic de l'invisible.</p>
+        </div>
+
+        <div id="text-fr" class="description-content hidden">
+            <p>Conçu et coordonné par <strong>Marc Zaragoza</strong>, le collectif opère au seuil où la spéculation théorique converge avec la rigueur technique. L'intervention est fondamentalement activée par la grammaire cinétique de <strong>Wonderground</strong> (Tom Weksler et Roser Tutusaus). Leurs systèmes chorégraphiques fonctionnent comme une infrastructure vivante, utilisant la précision à haute vitesse pour régir le flux du vide.</p>
+            <p>Cette force cinétique est abritée au sein des environnements tectoniques définis par <strong>m-i-r-a arquitectura</strong> (Dori Sadan, Niccolò Marini et Marga Ruiz). Le projet émerge de cette synergie horizontale, soutenue par la subversion conceptuelle de <strong>Poética Beligerante</strong> (avec Marga Ruiz), revendiquant le corps comme agent structurel actif.</p>
+            <p>Actuellement, en collaboration avec le cinéaste <strong>Ignasi Castañé</strong>, le projet développe une série d'œuvres de vidéodanse documentaire dans des espaces en construction, traçant un registre cartographique de l'invisible.</p>
+        </div>
+
+        <div id="text-de" class="description-content hidden">
+            <p>Konzipiert und koordiniert von <strong>Marc Zaragoza</strong>, agiert das Kollektiv an der Schnittstelle, wo theoretische Spekulation auf technische Präzision trifft. Die Intervention wird primär durch die kinetische Grammatik von <strong>Wonderground</strong> (Tom Weksler und Roser Tutusaus) aktiviert. Ihre choreografischen Systeme fungieren als lebendige Infrastruktur, die mit Hochgeschwindigkeitspräzision den Fluss des Leerraums steuert.</p>
+            <p>Diese kinetische Kraft ist in den tektonischen Umgebungen von <strong>m-i-r-a arquitectura</strong> (Dori Sadan, Niccolò Marini und Marga Ruiz) eingebettet. Das Projekt entsteht aus dieser horizontalen Synergie, unterstützt durch die konzeptionelle Subversion von <strong>Poética Beligerante</strong> (mit Marga Ruiz), die den Körper als aktiven strukturellen Akteur zurückfordert.</p>
+            <p>Derzeit entwickelt das Projekt in Zusammenarbeit mit dem Filmemacher <strong>Ignasi Castañé</strong> eine Reihe von dokumentarischen Tanzvideos in Baustellen-Räumen und zeichnet so eine kartografische Aufzeichnung des Unsichtbaren.</p>
+        </div>
+
         <div id="text-zh" class="description-content hidden">
             <p>由 <strong>Marc Zaragoza</strong> 构思并协调，该集体活跃于理论思辨与技术严谨性相融合的边缘。干预行动主要由 <strong>Wonderground</strong>（Tom Weksler 与 Roser Tutusaus）的动力语法激活。他们的编舞系统作为一种动态基础设施，利用高速精准性来管控空间的节奏与流动。</p>
-            <p>这种动力存在于由 <strong>m-i-r-a arquitectura</strong>（Dori Sadan、Niccolò Marini 与 Marga Ruiz）定义的构造环境中。他们的实践勾勒出物质与空间具有同等分量的构造领域。该项目诞生于这种水平协作，并辅以 <strong>Poética Beligerante</strong> 的概念颠覆，将身体重塑为主动的结构媒介。</p>
-            <p>目前，与电影制作人 <strong>Ignasi Castañé</strong> 合作，该项目正在开发一系列关于施工中空间的纪录影像作品，旨在通过“进行中”的视角绘制不可见空间的制图记录。</p>
+            <p>这种动力存在于由 <strong>m-i-r-a arquitectura</strong>（Dori Sadan、Niccolò Marini 与 Marga Ruiz）定义的构造环境中。该项目诞生于这种水平协作，并辅以 <strong>Poética Beligerante</strong>（与 Marga Ruiz）的概念颠覆，将身体重塑为主动的结构媒介。</p>
+            <p>目前，与电影制作人 <strong>Ignasi Castañé</strong> 合作，该项目正在开发一系列关于施工中空间的纪录影像作品，绘制不可见空间的制图记录。</p>
         </div>
 
         <div id="text-jp" class="description-content hidden">
             <p><strong>Marc Zaragoza</strong> によって構想・調整されたこのコレクティブは、理論的思索と技術的厳格さが交差する境界で活動しています。その介入は、主に <strong>Wonderground</strong> (Tom Weksler と Roser Tutusaus) のキネティックな文法によって活性化されます。彼らの振付システムは、高速な精度を用いて空隙のテンポと流れを支配する、生きたインフラとして機能します。</p>
-            <p>この動力は、<strong>m-i-r-a arquitectura</strong> (Dori Sadan, Niccolò Marini, Marga Ruiz) によって定義されたテクトニックな環境の中に収められています。本プロジェクトは、身体を能動的な構造的エージェントとして再定義する <strong>Poética Beligerante</strong> の概念的転覆に支えられ、水平的なシナジーから生まれます。</p>
-            <p>現在、映像作家の <strong>Ignasi Castañé</strong> との協力により、建設中の空間を舞台にしたドキュメンタリー・スクリーンダンス作品を制作中であり、進行中の視点から「見えないもの」の地図記録を試みています。</p>
+            <p>この動力は、<strong>m-i-r-a arquitectura</strong> (Dori Sadan, Niccolò Marini, Marga Ruiz) によって定義されたテクトニックな環境の中に収められています。本プロジェクトは、身体を能動的な構造的エージェントとして再定義する <strong>Poética Beligerante</strong> (Marga Ruiz と共に) の概念的転覆に支えられ、水平的なシナジーから生まれます。</p>
+            <p>現在、映像作家の <strong>Ignasi Castañé</strong> との協力により、建設中の空間を舞台にしたドキュメンタリー・スクリーンダンス作品を制作中であり、「見えないもの」の地図記録を試みています。</p>
         </div>
 
         <section class="archive-grid">
