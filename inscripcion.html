@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EL PLANO LATENTE | Portadores</title>
+  <meta name="description" content="Inscripción de portadores — El Plano Latente · Concéntrico 11 · 20 junio · Paseo del Espolón, Logroño"/>
+  <script>
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/PEGA_AQUI_TU_URL/exec';
+    const RESPONSABLE = { nombre:'Marc Zaragoza', org:'Dancing on Architecture', email:'marc.zaragoza@m-i-r-a.com', dir:'Barcelona, España' };
+    const MAX_PLAZAS = 100;
+    const FECHAS_WORKSHOP = '19 y 20 de junio';
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --black: #000000;
+      --gray: #888888;
+      --accent: #f2ff00;
+      --grid-gap: 24px;
+      --size-title: 18px;
+      --size-meta: 9px;
+      --size-body: 14.5px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-size: var(--size-body);
+      line-height: 1.5;
+      padding: 64px 48px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: var(--grid-gap);
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* ── HEADER ── */
+    header {
+      grid-column: 1 / span 12;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 40px;
+      border-bottom: 1px solid var(--black);
+      padding-bottom: 8px;
+    }
+    header h1 {
+      font-size: var(--size-title);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+    }
+    header a {
+      font-size: var(--size-meta);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      color: var(--gray);
+    }
+    header a:hover { color: var(--black); }
+
+    /* ── EVENT META ── */
+    .event-meta {
+      grid-column: 1 / span 12;
+      display: flex;
+      gap: 0;
+      margin-bottom: 80px;
+      border: 1px solid var(--black);
+    }
+    .meta-cell {
+      flex: 1;
+      padding: 14px 20px;
+      border-right: 1px solid var(--black);
+    }
+    .meta-cell:last-child { border-right: none; }
+    .meta-key {
+      font-size: var(--size-meta);
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--gray);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .meta-val {
+      font-size: var(--size-title);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+    }
+    .meta-val.accent { background: var(--accent); padding: 0 4px; display: inline-block; }
+
+    /* ── COUNTER ── */
+    .counter-row {
+      grid-column: 1 / span 12;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 80px;
+      border-top: 1px solid #eee;
+      padding-top: 16px;
+    }
+    .counter-key {
+      font-size: var(--size-meta);
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--gray);
+      white-space: nowrap;
+    }
+    .counter-track {
+      flex: 1;
+      height: 1px;
+      background: #eee;
+      position: relative;
+    }
+    .counter-fill {
+      position: absolute;
+      top: 0; left: 0; bottom: 0;
+      background: var(--black);
+      width: 0;
+      transition: width 1s ease;
+    }
+    .counter-val {
+      font-size: var(--size-meta);
+      font-weight: 700;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    /* ── SECTION LABELS ── */
+    .section-head {
+      grid-column: 1 / span 12;
+      font-size: var(--size-meta);
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--gray);
+      border-top: 1px solid var(--black);
+      padding-top: 16px;
+      margin-bottom: 24px;
+    }
+
+    /* ── TYPE CARDS ── */
+    .type-row {
+      grid-column: 1 / span 12;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--black);
+      margin-bottom: 56px;
+    }
+    .type-card {
+      padding: 28px 24px;
+      border-right: 1px solid var(--black);
+      cursor: pointer;
+      transition: background 0.15s;
+      position: relative;
+    }
+    .type-card:last-child { border-right: none; }
+    .type-card:hover { background: #f8f8f8; }
+    .type-card.sel { background: var(--black); }
+
+    .tc-tag {
+      font-size: var(--size-meta);
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--gray);
+      display: block;
+      margin-bottom: 12px;
+    }
+    .type-card.sel .tc-tag { color: var(--gray); }
+
+    .tc-name {
+      font-size: var(--size-title);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: var(--black);
+      margin-bottom: 10px;
+    }
+    .type-card.sel .tc-name { color: #fff; }
+
+    .tc-desc {
+      font-size: 12px;
+      color: var(--gray);
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    .type-card.sel .tc-desc { color: #888; }
+
+    .tc-gift {
+      display: inline-block;
+      background: var(--accent);
+      padding: 3px 8px;
+      font-size: var(--size-meta);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--black);
+    }
+    .type-card.sel .tc-gift { background: var(--accent); }
+
+    /* ── FORM FIELDS ── */
+    .fields-row {
+      grid-column: 1 / span 6;
+      margin-bottom: 40px;
+    }
+    .fields-row.full { grid-column: 1 / span 12; }
+
+    .field { margin-bottom: 20px; }
+    .field-label {
+      display: block;
+      font-size: var(--size-meta);
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 6px;
+    }
+    .field-label .req { color: var(--black); }
+
+    input[type=text],
+    input[type=email],
+    input[type=tel] {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--black);
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-size: var(--size-body);
+      font-weight: 400;
+      padding: 8px 0;
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    input:focus { border-bottom-color: var(--black); }
+    input::placeholder { color: #ccc; }
+
+    /* ── CHANNEL ── */
+    .channel-wrap {
+      grid-column: 1 / span 12;
+      margin-bottom: 56px;
+    }
+    .ch-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .ch-btn {
+      background: transparent;
+      border: 1px solid var(--black);
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-size: var(--size-meta);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 6px 14px;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+    .ch-btn:hover { background: #f0f0f0; }
+    .ch-btn.sel { background: var(--black); color: #fff; }
+
+    /* ── CONSENT ── */
+    .consent-wrap {
+      grid-column: 1 / span 8;
+      margin-bottom: 40px;
+      border: 1px solid var(--black);
+      padding: 20px;
+    }
+    .consent-text {
+      font-size: 11px;
+      color: var(--gray);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .consent-text a { color: var(--black); text-decoration: underline; cursor: pointer; }
+    .check-row { display: flex; align-items: flex-start; gap: 12px; cursor: pointer; }
+    .check-row input[type=checkbox] {
+      width: 14px; height: 14px; margin-top: 2px;
+      flex-shrink: 0; accent-color: var(--black); cursor: pointer;
+    }
+    .check-text { font-size: 12px; color: var(--black); line-height: 1.5; }
+
+    /* ── SUBMIT ── */
+    .submit-wrap {
+      grid-column: 1 / span 12;
+      border-top: 1px solid var(--black);
+      padding-top: 24px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      margin-bottom: 120px;
+    }
+    .btn-submit {
+      background: var(--black);
+      border: none;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: var(--size-meta);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 14px 32px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-submit:hover:not(:disabled) { background: #333; }
+    .btn-submit:disabled { background: #ccc; cursor: not-allowed; }
+    .submit-note {
+      font-size: var(--size-meta);
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    /* ── ERR ── */
+    .err {
+      font-size: var(--size-meta);
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #c00;
+      margin-top: 4px;
+      display: none;
+    }
+
+    /* ── STATES ── */
+    #state-sending, #state-ok, #state-error { display: none; }
+
+    .state-block {
+      grid-column: 1 / span 12;
+      border: 1px solid var(--black);
+      padding: 64px 40px;
+      text-align: center;
+      margin-bottom: 120px;
+    }
+    .state-meta {
+      font-size: var(--size-meta);
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .piece-num {
+      font-size: clamp(80px, 14vw, 160px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 0.85;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .piece-sub {
+      font-size: var(--size-meta);
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 24px;
+    }
+    .ok-name {
+      font-size: var(--size-title);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .ok-info {
+      font-size: 12px;
+      color: var(--gray);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .ws-ok {
+      display: inline-block;
+      background: var(--accent);
+      padding: 4px 12px;
+      font-size: var(--size-meta);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 20px;
+    }
+    .spinner {
+      width: 24px; height: 24px;
+      border: 2px solid #eee;
+      border-top-color: var(--black);
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+      margin: 0 auto 16px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── FOOTER ── */
+    footer {
+      grid-column: 1 / span 12;
+      border-top: 1px solid #eee;
+      padding-top: 32px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--grid-gap);
+    }
+    .footer-col h4 {
+      font-size: var(--size-meta);
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+    .footer-col p, .footer-col a, .footer-col span {
+      font-size: 11px;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--black);
+      line-height: 1.6;
+      cursor: pointer;
+    }
+    .footer-col a:hover { text-decoration: underline; }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,.7); z-index: 50;
+      overflow-y: auto; padding: 40px 20px;
+    }
+    .modal-overlay.open { display: flex; align-items: flex-start; justify-content: center; }
+    .modal {
+      background: #fff;
+      max-width: 560px; width: 100%;
+      padding: 40px; margin: auto;
+      position: relative;
+      border: 1px solid var(--black);
+    }
+    .modal-close {
+      position: absolute; top: 16px; right: 16px;
+      font-size: var(--size-meta); font-weight: 700;
+      text-transform: uppercase; cursor: pointer;
+      border-bottom: 1px solid var(--black);
+      background: none; border-top: none; border-left: none; border-right: none;
+      font-family: 'Inter', sans-serif;
+    }
+    .modal h2 {
+      font-size: var(--size-title);
+      font-weight: 700; text-transform: uppercase;
+      margin-bottom: 24px; letter-spacing: -0.01em;
+    }
+    .modal h3 {
+      font-size: var(--size-meta);
+      font-weight: 700; text-transform: uppercase;
+      color: var(--gray);
+      margin: 18px 0 6px;
+      border-top: 1px solid #eee; padding-top: 10px;
+    }
+    .modal p, .modal li { font-size: 12px; line-height: 1.7; color: #333; }
+    .modal ul { padding-left: 16px; }
+    .modal li { margin-bottom: 3px; }
+    .modal a { color: var(--black); }
+
+    @media (max-width: 900px) {
+      body { padding: 40px 20px; }
+      .grid { display: block; }
+      .event-meta { flex-wrap: wrap; }
+      .meta-cell { flex: 1 1 50%; }
+      .type-row { grid-template-columns: 1fr; }
+      .type-card { border-right: none; border-bottom: 1px solid var(--black); }
+      .type-card:last-child { border-bottom: none; }
+      footer { grid-template-columns: 1fr 1fr; row-gap: 32px; }
+      .consent-wrap { margin-bottom: 32px; }
+    }
+  </style>
+</head>
+<body>
+<div class="grid">
+
+  <!-- HEADER -->
+  <header>
+    <h1>El Plano Latente</h1>
+    <a href="https://dancing-on-architecture.org">Dancing on Architecture</a>
+  </header>
+
+  <!-- EVENT META -->
+  <div class="event-meta">
+    <div class="meta-cell">
+      <span class="meta-key">Fecha</span>
+      <span class="meta-val">20 Jun 2025</span>
+    </div>
+    <div class="meta-cell">
+      <span class="meta-key">Hora</span>
+      <span class="meta-val">19:00 h</span>
+    </div>
+    <div class="meta-cell">
+      <span class="meta-key">Duración</span>
+      <span class="meta-val">28'36"</span>
+    </div>
+    <div class="meta-cell">
+      <span class="meta-key">Lugar</span>
+      <span class="meta-val">Espolón, Logroño</span>
+    </div>
+    <div class="meta-cell">
+      <span class="meta-key">Portadores</span>
+      <span class="meta-val accent" id="spots-val">100</span>
+    </div>
+  </div>
+
+  <!-- COUNTER -->
+  <div class="counter-row">
+    <span class="counter-key">Inscritos</span>
+    <div class="counter-track"><div class="counter-fill" id="counter-fill"></div></div>
+    <span class="counter-val" id="counter-val">— / 100</span>
+  </div>
+
+  <!-- ── FORM (visible) / STATES (hidden) ── -->
+  <div id="form-body" style="display:contents">
+
+    <!-- Tipo -->
+    <div class="section-head">Tipo de participación</div>
+    <div class="type-row">
+      <div class="type-card" id="card-ws" onclick="selectType('workshop')">
+        <span class="tc-tag">Con ensayo · 19 y 20 jun</span>
+        <div class="tc-name">Portador Workshop</div>
+        <div class="tc-desc">Trabajo de movimiento con el equipo coreográfico los días previos.</div>
+        <span class="tc-gift">Tote bag + objeto especial</span>
+      </div>
+      <div class="type-card" id="card-dir" onclick="selectType('directo')">
+        <span class="tc-tag">Sin ensayo</span>
+        <div class="tc-name">Portador Directo</div>
+        <div class="tc-desc">Introducción in situ antes de comenzar el día del evento.</div>
+        <span class="tc-gift">Tote bag</span>
+      </div>
+    </div>
+    <div class="err" id="err-tipo" style="grid-column:1/span 12;margin-top:-40px;margin-bottom:24px"></div>
+
+    <!-- Datos -->
+    <div class="section-head">Datos</div>
+    <div class="fields-row">
+      <div class="field">
+        <label class="field-label">Nombre completo <span class="req">*</span></label>
+        <input type="text" id="inp-nombre" placeholder="Nombre" autocomplete="name"/>
+        <div class="err" id="err-nombre"></div>
+      </div>
+      <div class="field">
+        <label class="field-label">Email <span class="req">*</span></label>
+        <input type="email" id="inp-email" placeholder="tu@email.com" autocomplete="email"/>
+        <div class="err" id="err-email"></div>
+      </div>
+      <div class="field">
+        <label class="field-label">Teléfono <span style="color:var(--gray);font-weight:400">(opcional)</span></label>
+        <input type="tel" id="inp-tel" placeholder="600 000 000" autocomplete="tel"/>
+      </div>
+      <div class="err" id="err-contact"></div>
+    </div>
+
+    <!-- Canal -->
+    <div class="channel-wrap">
+      <div class="section-head" style="margin-bottom:12px">¿Cómo nos encontraste?</div>
+      <div class="ch-grid" id="channels"></div>
+    </div>
+
+    <!-- Consentimiento -->
+    <div class="consent-wrap">
+      <p class="consent-text">
+        Datos tratados por <strong id="txt-responsable"></strong> para gestionar tu inscripción.
+        No se ceden a terceros. Derechos: <strong id="txt-email"></strong>.
+        <a onclick="openModal()">Información completa (RGPD / LOPDGDD)</a>
+      </p>
+      <label class="check-row">
+        <input type="checkbox" id="chk-consent" onchange="toggleSubmit()"/>
+        <span class="check-text">Acepto el tratamiento de mis datos para la gestión de la inscripción.</span>
+      </label>
+      <div class="err" id="err-consent" style="margin-top:8px"></div>
+    </div>
+
+    <!-- Submit -->
+    <div class="submit-wrap">
+      <button class="btn-submit" id="btn-submit" onclick="doSubmit()" disabled>Confirmar inscripción</button>
+      <span class="submit-note">Recibirás confirmación por email.</span>
+    </div>
+
+  </div><!-- /form-body -->
+
+  <!-- STATE: sending -->
+  <div id="state-sending">
+    <div class="state-block">
+      <div class="spinner"></div>
+      <div class="state-meta">Registrando…</div>
+    </div>
+  </div>
+
+  <!-- STATE: ok -->
+  <div id="state-ok">
+    <div class="state-block">
+      <div class="state-meta">Inscripción confirmada</div>
+      <div class="piece-num" id="suc-num">#001</div>
+      <div class="piece-sub">Tu número de pieza</div>
+      <div class="ok-name" id="suc-name"></div>
+      <div class="ok-info">Paseo del Espolón · 20 Jun · 18:30 h</div>
+      <div class="ws-ok" id="ws-ok" style="display:none">Workshop: <span id="ws-fechas-ok"></span></div>
+    </div>
+  </div>
+
+  <!-- STATE: error -->
+  <div id="state-error">
+    <div class="state-block">
+      <div class="state-meta">Error</div>
+      <div class="ok-info" style="margin-bottom:24px">Ha ocurrido un error. Inténtalo de nuevo.</div>
+      <button class="btn-submit" onclick="resetForm()">Reintentar</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-col">
+      <h4>Evento</h4>
+      <p>Concéntrico 11<br>Logroño, ES / 2025</p>
+    </div>
+    <div class="footer-col">
+      <h4>Colectivo</h4>
+      <a href="https://dancing-on-architecture.org" target="_blank">Dancing on Architecture</a><br>
+      <a href="https://www.m-i-r-a.com/" target="_blank">m-i-r-a arquitectura</a><br>
+      <a href="https://www.wondergroundcompany.com/" target="_blank">Wonderground</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <a href="mailto:marc.zaragoza@m-i-r-a.com">marc.zaragoza@m-i-r-a.com</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <span onclick="openModal()">Protección de datos</span>
+    </div>
+  </footer>
+
+</div><!-- /grid -->
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="if(event.target.id==='modal')closeModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">[ Cerrar ]</button>
+    <h2>Protección de Datos</h2>
+    <p>De conformidad con el RGPD (UE) 2016/679 y la LOPDGDD 3/2018:</p>
+    <h3>Responsable</h3><p id="modal-responsable"></p>
+    <h3>Finalidad</h3><p>Gestión de la inscripción en El Plano Latente (Concéntrico, 20 junio 2025) y envío de información operativa del evento.</p>
+    <h3>Base legal</h3><p>Consentimiento explícito (art. 6.1.a RGPD). Puede retirarlo en cualquier momento.</p>
+    <h3>Datos tratados</h3>
+    <ul>
+      <li>Nombre completo</li>
+      <li>Email y/o teléfono</li>
+      <li>Tipo de participación (Workshop / Directo)</li>
+      <li>Canal de conocimiento del evento (opcional)</li>
+      <li>Fecha y hora de inscripción</li>
+    </ul>
+    <h3>Destinatarios</h3><p>Google Sheets (Google LLC), cubierto por Cláusulas Contractuales Tipo UE. No se ceden datos a terceros con fines comerciales.</p>
+    <h3>Conservación</h3><p>Hasta 30 días tras el evento (20 julio 2025).</p>
+    <h3>Derechos</h3>
+    <ul>
+      <li>Acceso, Rectificación y Supresión</li>
+      <li>Oposición, Portabilidad y Limitación</li>
+    </ul>
+    <p>Escribe a <strong id="modal-email"></strong> — asunto "Derechos RGPD". Reclamaciones: <a href="https://www.aepd.es" target="_blank">AEPD</a>.</p>
+    <h3>Transferencias internacionales</h3><p>Google LLC adherida al Marco de Privacidad UE–EE.UU. (art. 45 RGPD).</p>
+  </div>
+</div>
+
+<script>
+  document.getElementById('txt-responsable').textContent  = RESPONSABLE.org;
+  document.getElementById('txt-email').textContent        = RESPONSABLE.email;
+  document.getElementById('modal-responsable').textContent=
+    RESPONSABLE.nombre+' / '+RESPONSABLE.org+' — '+RESPONSABLE.dir+' — '+RESPONSABLE.email;
+  document.getElementById('modal-email').textContent      = RESPONSABLE.email;
+  document.getElementById('ws-fechas-ok').textContent     = FECHAS_WORKSHOP;
+
+  const CHANNELS = ['Instagram','Cartelería','Amigo/a','Concéntrico','Prensa','Universidad','Otro'];
+  let canal='', tipo='';
+
+  (function(){
+    const g=document.getElementById('channels');
+    CHANNELS.forEach(ch=>{
+      const b=document.createElement('button');
+      b.className='ch-btn'; b.textContent=ch; b.type='button';
+      b.onclick=()=>{ canal=ch; g.querySelectorAll('.ch-btn').forEach(x=>x.classList.remove('sel')); b.classList.add('sel'); };
+      g.appendChild(b);
+    });
+  })();
+
+  async function loadCount(){
+    try{
+      const d=await(await fetch(APPS_SCRIPT_URL)).json();
+      if(d.ok) updateCounter(d.total||0);
+    }catch{ document.getElementById('counter-val').textContent='— / 100'; }
+  }
+  function updateCounter(n){
+    document.getElementById('counter-val').textContent=n+' / '+MAX_PLAZAS;
+    document.getElementById('counter-fill').style.width=Math.min(n/MAX_PLAZAS*100,100)+'%';
+    const rem=MAX_PLAZAS-n;
+    document.getElementById('spots-val').textContent=rem>0?rem+' disponibles':'Completo';
+  }
+  loadCount();
+
+  function selectType(t){
+    tipo=t;
+    document.getElementById('card-ws').classList.toggle('sel',t==='workshop');
+    document.getElementById('card-dir').classList.toggle('sel',t==='directo');
+    setErr('err-tipo','');
+  }
+
+  function toggleSubmit(){
+    document.getElementById('btn-submit').disabled=!document.getElementById('chk-consent').checked;
+  }
+
+  function setErr(id,msg){
+    const e=document.getElementById(id);
+    if(!e)return; e.textContent=msg; e.style.display=msg?'block':'none';
+  }
+
+  function showState(s){
+    document.getElementById('form-body').style.display=s==='form'?'contents':'none';
+    ['state-sending','state-ok','state-error'].forEach(id=>{
+      document.getElementById(id).style.display=id===s?'contents':'none';
+    });
+  }
+  function resetForm(){ showState('form'); }
+
+  function validate(){
+    let ok=true;
+    if(!tipo){setErr('err-tipo','Elige cómo quieres participar');ok=false;}else setErr('err-tipo','');
+    const nombre=document.getElementById('inp-nombre').value.trim();
+    if(!nombre){setErr('err-nombre','Requerido');ok=false;}else setErr('err-nombre','');
+    const email=document.getElementById('inp-email').value.trim();
+    const tel=document.getElementById('inp-tel').value.trim();
+    setErr('err-email','');setErr('err-contact','');
+    if(!email&&!tel){setErr('err-contact','Introduce email o teléfono');ok=false;}
+    else if(email&&!/\S+@\S+\.\S+/.test(email)){setErr('err-email','Email no válido');ok=false;}
+    if(!document.getElementById('chk-consent').checked){setErr('err-consent','Requerido');ok=false;}
+    else setErr('err-consent','');
+    return ok;
+  }
+
+  async function doSubmit(){
+    if(!validate()){
+      const e=document.querySelector('.err[style*="block"]');
+      if(e)e.scrollIntoView({behavior:'smooth',block:'center'});
+      return;
+    }
+    showState('state-sending');
+    const payload={
+      nombre:document.getElementById('inp-nombre').value.trim(),
+      email:document.getElementById('inp-email').value.trim(),
+      telefono:document.getElementById('inp-tel').value.trim(),
+      canal,tipo,consentimiento:true,ts:new Date().toISOString()
+    };
+    try{
+      const data=await(await fetch(APPS_SCRIPT_URL,{method:'POST',body:JSON.stringify(payload)})).json();
+      if(data.ok){
+        document.getElementById('suc-num').textContent='#'+String(data.num).padStart(3,'0');
+        document.getElementById('suc-name').textContent=payload.nombre.toUpperCase();
+        if(tipo==='workshop')document.getElementById('ws-ok').style.display='inline-block';
+        updateCounter(data.total||0);
+        showState('state-ok');
+        window.scrollTo({top:0,behavior:'smooth'});
+      }else showState('state-error');
+    }catch{showState('state-error');}
+  }
+
+  function openModal(){document.getElementById('modal').classList.add('open');}
+  function closeModal(){document.getElementById('modal').classList.remove('open');}
+</script>
+</body>
+</html>
