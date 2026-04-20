@@ -489,14 +489,12 @@
     <div class="state-block">
       <div class="state-meta">Inscripción confirmada</div>
       <h2 class="ok-headline" id="suc-headline">Gracias</h2>
-      <p class="ok-body">
+      <p class="ok-body" id="suc-body">
         Gracias por unirte al <strong>Plano Latente</strong>.<br>
         El 20 de junio formarás parte de los 100 cuerpos<br>
-        que convertirán el Paseo del Espolón en una coreografía colectiva.
-      </p>
-      <p class="ok-body" style="margin-top:-6px">
+        que convertirán el Paseo del Espolón en una coreografía colectiva.<br><br>
         Te escribiremos por email con los detalles de la convocatoria,<br>
-        el horario exacto y todo lo que necesitas saber.
+        el punto de encuentro y la recogida de tu pieza.
       </p>
       <div class="ok-meta">20 Jun 2026 · Espolón, Logroño</div>
       <div class="ws-ok" id="ws-ok" style="display:none">Workshop: <span id="ws-fechas-ok"></span></div>
@@ -615,16 +613,19 @@
       const data = await (await fetch(APPS_SCRIPT_URL, { method:'POST', body: JSON.stringify(payload) })).json();
       if(data.ok){
         const first = payload.nombre.split(' ')[0];
-        document.getElementById('suc-headline').textContent = 'Gracias, ' + first;
+        if(data.updated){
+          document.getElementById('suc-headline').textContent = 'Datos actualizados, ' + first;
+          document.getElementById('suc-body').innerHTML =
+            'Tu inscripción se ha actualizado correctamente.<br>' +
+            'Nos vemos el 20 de junio en el Paseo del Espolón.';
+        } else {
+          document.getElementById('suc-headline').textContent = 'Gracias, ' + first;
+        }
         if(tipo === 'workshop') document.getElementById('ws-ok').style.display = 'inline-block';
         showState('state-ok');
         window.scrollTo({ top:0, behavior:'smooth' });
       } else {
-        if(data.error === 'email_duplicado'){
-          showState('form');
-          setErr('err-email','Este email ya está registrado');
-          document.getElementById('inp-email').scrollIntoView({behavior:'smooth',block:'center'});
-        } else showState('state-error');
+        showState('state-error');
       }
     } catch {
       showState('state-error');
