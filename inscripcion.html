@@ -495,6 +495,10 @@
           <input type="tel" id="inp-tel" placeholder="600 000 000" autocomplete="tel"/>
         </div>
       </div>
+      <!-- Honeypot: campo invisible para bots. Los humanos no lo ven, los bots lo rellenan. -->
+      <div style="position:absolute;left:-9999px;top:-9999px;opacity:0;pointer-events:none" aria-hidden="true">
+        <label>Web <input type="text" id="hp-website" tabindex="-1" autocomplete="off"/></label>
+      </div>
       <div class="err" id="err-contact"></div>
     </div>
 
@@ -590,6 +594,8 @@
   const CHANNELS = [];
   let canal='', tipo='';
 
+  const openedAt = Date.now(); // timestamp cuando se cargó la página
+
   async function loadCount(){
     try{ await fetch(APPS_SCRIPT_URL); } catch {}
   }
@@ -630,7 +636,9 @@
       nombre:document.getElementById('inp-nombre').value.trim(),
       email:document.getElementById('inp-email').value.trim(),
       telefono:document.getElementById('inp-tel').value.trim(),
-      canal,tipo,consentimiento:true,ts:new Date().toISOString()
+      canal,tipo,consentimiento:true,ts:new Date().toISOString(),
+      hp:document.getElementById('hp-website').value,   // honeypot: debe estar vacío
+      elapsed:Date.now()-openedAt                       // ms desde que se cargó la página
     };
     try{
       const data=await(await fetch(APPS_SCRIPT_URL,{method:'POST',body:JSON.stringify(payload)})).json();
@@ -640,7 +648,14 @@
         if(tipo==='workshop')document.getElementById('ws-ok').style.display='inline-block';
         showState('state-ok');
         window.scrollTo({top:0,behavior:'smooth'});
-      }else showState('state-error');
+      }else{
+        // Mensaje específico si el email ya está registrado
+        if(data.error==='email_duplicado'){
+          showState('form');
+          setErr('err-email','Este email ya está registrado');
+          document.getElementById('inp-email').scrollIntoView({behavior:'smooth',block:'center'});
+        }else showState('state-error');
+      }
     }catch{showState('state-error');}
   }
   function openModal(){document.getElementById('modal').classList.add('open');}
