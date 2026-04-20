@@ -99,25 +99,6 @@
       text-transform: uppercase;
       letter-spacing: -0.01em;
     }
-    .meta-val.accent { background: var(--accent); padding: 0 4px; display: inline-block; }
-
-    /* ── COUNTER ── */
-    .counter-row {
-      grid-column: 1 / span 12;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 14px;
-    }
-    .counter-key, .counter-val {
-      font-size: var(--size-meta);
-      font-weight: 700;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-    .counter-key { color: var(--gray); }
-    .counter-track { flex: 1; height: 1px; background: #eee; position: relative; }
-    .counter-fill { position: absolute; inset: 0 auto 0 0; background: var(--black); width: 0; transition: width 1s ease; }
 
     /* ── SECTION HEAD ── */
     .section-head {
@@ -194,7 +175,6 @@
       grid-template-columns: 1fr 1fr 1fr;
       gap: 16px;
     }
-    .field { }
     .field-label {
       display: block;
       font-size: var(--size-meta);
@@ -219,29 +199,7 @@
     }
     input::placeholder { color: #ccc; }
 
-    /* ── CHANNEL ── */
-    .ch-wrap {
-      grid-column: 1 / span 12;
-      margin-bottom: 12px;
-    }
-    .ch-grid { display: flex; flex-wrap: wrap; gap: 5px; }
-    .ch-btn {
-      background: transparent;
-      border: 1px solid var(--black);
-      color: var(--black);
-      font-family: 'Inter', sans-serif;
-      font-size: var(--size-meta);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      padding: 4px 10px;
-      cursor: pointer;
-      transition: 0.15s;
-    }
-    .ch-btn:hover { background: #f0f0f0; }
-    .ch-btn.sel { background: var(--black); color: #fff; }
-
-    /* ── CONSENT + SUBMIT en una sola fila ── */
+    /* ── CONSENT + SUBMIT ── */
     .bottom-row {
       grid-column: 1 / span 12;
       display: grid;
@@ -315,7 +273,7 @@
     .state-block {
       grid-column: 1 / span 12;
       border: 1px solid var(--black);
-      padding: 28px 24px;
+      padding: 40px 32px;
       text-align: center;
       margin-bottom: 12px;
     }
@@ -326,42 +284,39 @@
       color: var(--gray);
       margin-bottom: 10px;
     }
-    .piece-num {
-      font-size: clamp(60px, 10vw, 110px);
+    .ok-headline {
+      font-size: clamp(32px, 5vw, 48px);
       font-weight: 900;
-      letter-spacing: -0.04em;
-      line-height: 0.85;
+      letter-spacing: -0.03em;
+      line-height: 0.95;
       text-transform: uppercase;
-      margin-bottom: 6px;
+      margin: 18px 0 14px;
     }
-    .piece-sub {
+    .ok-body {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #333;
+      max-width: 520px;
+      margin: 0 auto 20px;
+      font-weight: 400;
+    }
+    .ok-body strong { font-weight: 600; }
+    .ok-meta {
       font-size: var(--size-meta);
       font-weight: 700;
       text-transform: uppercase;
       color: var(--gray);
-      margin-bottom: 14px;
-    }
-    .ok-name {
-      font-size: 14px;
-      font-weight: 700;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-    }
-    .ok-info {
-      font-size: 11px;
-      color: var(--gray);
-      text-transform: uppercase;
-      font-weight: 600;
+      letter-spacing: 0.1em;
     }
     .ws-ok {
       display: inline-block;
       background: var(--accent);
-      padding: 3px 10px;
+      padding: 4px 12px;
       font-size: var(--size-meta);
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      margin-top: 12px;
+      margin-top: 14px;
     }
     .spinner {
       width: 20px; height: 20px;
@@ -480,22 +435,22 @@
     <div class="form-block">
       <div class="section-head">Datos</div>
       <div class="fields-row">
-        <div class="field">
+        <div>
           <label class="field-label">Nombre completo</label>
           <input type="text" id="inp-nombre" placeholder="Nombre" autocomplete="name"/>
           <div class="err" id="err-nombre"></div>
         </div>
-        <div class="field">
+        <div>
           <label class="field-label">Email</label>
           <input type="email" id="inp-email" placeholder="tu@email.com" autocomplete="email"/>
           <div class="err" id="err-email"></div>
         </div>
-        <div class="field">
+        <div>
           <label class="field-label">Teléfono <span class="opt">(opcional)</span></label>
           <input type="tel" id="inp-tel" placeholder="600 000 000" autocomplete="tel"/>
         </div>
       </div>
-      <!-- Honeypot: campo invisible para bots. Los humanos no lo ven, los bots lo rellenan. -->
+      <!-- Honeypot anti-bots: invisible para humanos -->
       <div style="position:absolute;left:-9999px;top:-9999px;opacity:0;pointer-events:none" aria-hidden="true">
         <label>Web <input type="text" id="hp-website" tabindex="-1" autocomplete="off"/></label>
       </div>
@@ -521,6 +476,7 @@
 
   </div>
 
+  <!-- Enviando -->
   <div id="state-sending">
     <div class="state-block">
       <div class="spinner"></div>
@@ -528,23 +484,30 @@
     </div>
   </div>
 
+  <!-- Éxito -->
   <div id="state-ok">
     <div class="state-block">
       <div class="state-meta">Inscripción confirmada</div>
-      <div class="ok-name" id="suc-name" style="font-size:28px;margin:20px 0 16px"></div>
-        <div class="ok-info" style="font-size:14px;line-height:1.7;text-transform:none;font-weight:400;max-width:480px;margin:0 auto 20px">
-      Gracias por sumarte a <strong>El Plano Latente</strong>.<br>
-      Formarás parte de los 100 cuerpos que el 20 de junio convertirán<br>
-      el Paseo del Espolón en una cartografía viva.
-        </div>
-<div class="ok-info">20 Jun 2026 · 19:00 h · Espolón, Logroño</div>
+      <h2 class="ok-headline" id="suc-headline">Gracias</h2>
+      <p class="ok-body">
+        Gracias por unirte al <strong>Plano Latente</strong>.<br>
+        El 20 de junio formarás parte de los 100 cuerpos<br>
+        que convertirán el Paseo del Espolón en una coreografía colectiva.
+      </p>
+      <p class="ok-body" style="margin-top:-6px">
+        Te escribiremos por email con los detalles de la convocatoria,<br>
+        el punto de encuentro y la recogida de tu pieza.
+      </p>
+      <div class="ok-meta">20 Jun 2026 · Espolón, Logroño</div>
+      <div class="ws-ok" id="ws-ok" style="display:none">Workshop: <span id="ws-fechas-ok"></span></div>
     </div>
   </div>
 
+  <!-- Error -->
   <div id="state-error">
     <div class="state-block">
       <div class="state-meta">Error</div>
-      <div class="ok-info" style="margin-bottom:14px">Ha ocurrido un error. Inténtalo de nuevo.</div>
+      <p class="ok-body">Ha ocurrido un error. Por favor, inténtalo de nuevo.</p>
       <button class="btn-submit" onclick="resetForm()">Reintentar</button>
     </div>
   </div>
@@ -558,7 +521,7 @@
 
 </div>
 
-<!-- MODAL -->
+<!-- MODAL PRIVACIDAD -->
 <div class="modal-overlay" id="modal" onclick="if(event.target.id==='modal')closeModal()">
   <div class="modal">
     <button class="modal-close" onclick="closeModal()">[ Cerrar ]</button>
@@ -572,7 +535,6 @@
       <li>Nombre completo</li>
       <li>Email y/o teléfono</li>
       <li>Tipo de participación</li>
-      <li>Canal de conocimiento (opcional)</li>
       <li>Fecha y hora de inscripción</li>
     </ul>
     <h3>Destinatarios</h3><p>Google Sheets (Google LLC) bajo Cláusulas Contractuales Tipo UE. No se ceden a terceros con fines comerciales.</p>
@@ -593,75 +555,84 @@
   document.getElementById('modal-email').textContent      = RESPONSABLE.email;
   document.getElementById('ws-fechas-ok').textContent     = FECHAS_WORKSHOP;
 
-  const CHANNELS = [];
-  let canal='', tipo='';
-
-  const openedAt = Date.now(); // timestamp cuando se cargó la página
-
-  async function loadCount(){
-    try{ await fetch(APPS_SCRIPT_URL); } catch {}
-  }
-  loadCount();
+  let tipo = '';
+  const openedAt = Date.now();
 
   function selectType(t){
-    tipo=t;
-    document.getElementById('card-ws').classList.toggle('sel',t==='workshop');
-    document.getElementById('card-dir').classList.toggle('sel',t==='directo');
+    tipo = t;
+    document.getElementById('card-ws').classList.toggle('sel', t==='workshop');
+    document.getElementById('card-dir').classList.toggle('sel', t==='directo');
     setErr('err-tipo','');
   }
-  function toggleSubmit(){ document.getElementById('btn-submit').disabled=!document.getElementById('chk-consent').checked; }
-  function setErr(id,msg){ const e=document.getElementById(id); if(!e)return; e.textContent=msg; e.style.display=msg?'block':'none'; }
+  function toggleSubmit(){
+    document.getElementById('btn-submit').disabled = !document.getElementById('chk-consent').checked;
+  }
+  function setErr(id,msg){
+    const e = document.getElementById(id);
+    if(!e) return;
+    e.textContent = msg;
+    e.style.display = msg ? 'block' : 'none';
+  }
   function showState(s){
-    document.getElementById('form-body').style.display=s==='form'?'contents':'none';
-    ['state-sending','state-ok','state-error'].forEach(id=>{
-      document.getElementById(id).style.display=id===s?'contents':'none';
+    document.getElementById('form-body').style.display = s==='form' ? 'contents' : 'none';
+    ['state-sending','state-ok','state-error'].forEach(id => {
+      document.getElementById(id).style.display = id===s ? 'contents' : 'none';
     });
   }
   function resetForm(){ showState('form'); }
+
   function validate(){
-    let ok=true;
-    if(!tipo){setErr('err-tipo','Elige cómo quieres participar');ok=false;}else setErr('err-tipo','');
-    const nombre=document.getElementById('inp-nombre').value.trim();
-    if(!nombre){setErr('err-nombre','Requerido');ok=false;}else setErr('err-nombre','');
-    const email=document.getElementById('inp-email').value.trim();
-    const tel=document.getElementById('inp-tel').value.trim();
-    setErr('err-email','');setErr('err-contact','');
-    if(!email&&!tel){setErr('err-contact','Introduce email o teléfono');ok=false;}
-    else if(email&&!/\S+@\S+\.\S+/.test(email)){setErr('err-email','Email no válido');ok=false;}
-    if(!document.getElementById('chk-consent').checked){setErr('err-consent','Requerido');ok=false;}else setErr('err-consent','');
+    let ok = true;
+    if(!tipo){ setErr('err-tipo','Elige cómo quieres participar'); ok=false; } else setErr('err-tipo','');
+    const nombre = document.getElementById('inp-nombre').value.trim();
+    if(!nombre){ setErr('err-nombre','Requerido'); ok=false; } else setErr('err-nombre','');
+    const email = document.getElementById('inp-email').value.trim();
+    const tel = document.getElementById('inp-tel').value.trim();
+    setErr('err-email',''); setErr('err-contact','');
+    if(!email && !tel){ setErr('err-contact','Introduce email o teléfono'); ok=false; }
+    else if(email && !/\S+@\S+\.\S+/.test(email)){ setErr('err-email','Email no válido'); ok=false; }
+    if(!document.getElementById('chk-consent').checked){ setErr('err-consent','Requerido'); ok=false; } else setErr('err-consent','');
     return ok;
   }
+
   async function doSubmit(){
-    if(!validate()){ const e=document.querySelector('.err[style*="block"]'); if(e)e.scrollIntoView({behavior:'smooth',block:'center'}); return; }
+    if(!validate()){
+      const e = document.querySelector('.err[style*="block"]');
+      if(e) e.scrollIntoView({behavior:'smooth',block:'center'});
+      return;
+    }
     showState('state-sending');
-    const payload={
-      nombre:document.getElementById('inp-nombre').value.trim(),
-      email:document.getElementById('inp-email').value.trim(),
-      telefono:document.getElementById('inp-tel').value.trim(),
-      canal,tipo,consentimiento:true,ts:new Date().toISOString(),
-      hp:document.getElementById('hp-website').value,   // honeypot: debe estar vacío
-      elapsed:Date.now()-openedAt                       // ms desde que se cargó la página
+    const payload = {
+      nombre: document.getElementById('inp-nombre').value.trim(),
+      email: document.getElementById('inp-email').value.trim(),
+      telefono: document.getElementById('inp-tel').value.trim(),
+      tipo, consentimiento: true,
+      ts: new Date().toISOString(),
+      hp: document.getElementById('hp-website').value,
+      elapsed: Date.now() - openedAt
     };
     try{
-      const data=await(await fetch(APPS_SCRIPT_URL,{method:'POST',body:JSON.stringify(payload)})).json();
+      const data = await (await fetch(APPS_SCRIPT_URL, { method:'POST', body: JSON.stringify(payload) })).json();
       if(data.ok){
-        document.getElementById('suc-num').textContent='#'+String(data.num).padStart(3,'0');
-        document.getElementById('suc-name').textContent=payload.nombre.toUpperCase();
-        if(tipo==='workshop')document.getElementById('ws-ok').style.display='inline-block';
+        const first = payload.nombre.split(' ')[0];
+        document.getElementById('suc-headline').textContent = 'Gracias, ' + first;
+        if(tipo === 'workshop') document.getElementById('ws-ok').style.display = 'inline-block';
         showState('state-ok');
-        window.scrollTo({top:0,behavior:'smooth'});
-      }else{
-        // Mensaje específico si el email ya está registrado
-        if(data.error==='email_duplicado'){
+        window.scrollTo({ top:0, behavior:'smooth' });
+      } else {
+        if(data.error === 'email_duplicado'){
           showState('form');
           setErr('err-email','Este email ya está registrado');
           document.getElementById('inp-email').scrollIntoView({behavior:'smooth',block:'center'});
-        }else showState('state-error');
+        } else showState('state-error');
       }
-    }catch{showState('state-error');}
+    } catch {
+      showState('state-error');
+    }
   }
-  function openModal(){document.getElementById('modal').classList.add('open');}
-  function closeModal(){document.getElementById('modal').classList.remove('open');}
+
+  function openModal(){ document.getElementById('modal').classList.add('open'); }
+  function closeModal(){ document.getElementById('modal').classList.remove('open'); }
 </script>
 </body>
 </html>
