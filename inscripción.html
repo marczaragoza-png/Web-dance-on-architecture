@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DANCING ON ARCHITECTURE — Gracias</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --black: #000000;
+            --gray: #888888;
+            --accent: #f2ff00;
+            --pad: 32px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--black);
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .screen {
+            height: 100dvh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: var(--pad);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-bottom: 1px solid var(--black);
+            padding-bottom: 8px;
+            margin-bottom: 14px;
+            flex-shrink: 0;
+        }
+
+        h1 {
+            font-size: clamp(11px, 1.6vw, 16px);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -0.01em;
+        }
+
+        .lang-switch {
+            font-size: 9px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-switch span { cursor: pointer; color: var(--gray); transition: 0.2s; }
+        .lang-switch span.active { color: var(--black); text-decoration: underline; text-underline-offset: 3px; }
+
+        .award-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 14px;
+            flex-shrink: 0;
+        }
+
+        .award-badge {
+            background: var(--accent);
+            padding: 3px 9px;
+            font-size: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .award-badge.outline {
+            background: transparent;
+            border: 1px solid var(--black);
+        }
+
+        .main {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: var(--pad);
+            min-height: 0;
+        }
+
+        .hero-image {
+            min-height: 0;
+            overflow: hidden;
+        }
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(100%);
+            transition: filter 0.8s ease;
+        }
+        .hero-image:hover img { filter: grayscale(0%); }
+
+        .content-col {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 0;
+            overflow: hidden;
+        }
+
+        .manifesto-text {
+            font-size: clamp(18px, 2.6vw, 32px);
+            font-weight: 400;
+            line-height: 1.12;
+            letter-spacing: -0.03em;
+            margin-bottom: 18px;
+        }
+
+        .manifesto-text strong { font-weight: 900; }
+
+        .description-content p {
+            font-size: clamp(11px, 1vw, 13.5px);
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+        .description-content strong { font-weight: 600; }
+
+        footer {
+            flex-shrink: 0;
+            border-top: 1px solid #eee;
+            padding-top: 8px;
+            margin-top: 14px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        footer p, footer a {
+            font-size: 9px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--gray);
+            letter-spacing: 0.05em;
+        }
+        footer a { color: var(--black); }
+
+        .hidden { display: none; }
+
+        @media (max-width: 720px) {
+            :root { --pad: 18px; }
+            .main {
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr auto;
+            }
+            .hero-image { min-height: 0; }
+            .content-col { justify-content: flex-start; }
+            .manifesto-text { margin-bottom: 10px; }
+            .description-content p:nth-child(n+3) { display: none; }
+            footer { flex-direction: column; gap: 2px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="screen">
+        <header>
+            <h1>Dancing on Architecture</h1>
+            <nav class="lang-switch">
+                <span onclick="setLang('es')" class="active">ES</span>
+                <span onclick="setLang('ca')">CA</span>
+                <span onclick="setLang('en')">EN</span>
+            </nav>
+        </header>
+
+        <div class="award-row">
+            <div class="award-badge">Concéntrico 2026</div>
+            <div class="award-badge outline">Cat: Identidad y Ficción</div>
+            <div class="award-badge outline">Propuesta ganadora</div>
+        </div>
+
+        <div class="main">
+            <div class="hero-image">
+                <img src="plano_latente_gracias.jpg" alt="Participantes de El Plano Latente en el Paseo del Espolón, Concéntrico 2026">
+            </div>
+
+            <div class="content-col">
+                <div id="lead-es" class="manifesto-text">Gracias a todos los portadores. <strong>Sois</strong> la medida, el validador y la referencia absoluta de esta arquitectura.</div>
+                <div id="lead-ca" class="manifesto-text hidden">Gràcies a tots els portadors. <strong>Sou</strong> la mesura, el validador i la referència absoluta d'aquesta arquitectura.</div>
+                <div id="lead-en" class="manifesto-text hidden">Thank you to every bearer. <strong>You</strong> are the measure, the validator, and the absolute reference of this architecture.</div>
+
+                <div id="text-es" class="description-content">
+                    <p>Ha sido una experiencia maravillosa. Cada portador que sostuvo una línea en el Paseo del Espolón hizo posible <strong>El Plano Latente</strong>.</p>
+                    <p>Presentado en <strong>Concéntrico 2026</strong>, propuesta ganadora de la categoría <strong>Identidad y Ficción</strong>.</p>
+                    <p>Gracias a cada cuerpo y a todo el equipo que hizo posible esta pieza.</p>
+                </div>
+
+                <div id="text-ca" class="description-content hidden">
+                    <p>Ha estat una experiència meravellosa. Cada portador que va sostenir una línia al Paseo del Espolón va fer possible <strong>El Plano Latente</strong>.</p>
+                    <p>Presentat a <strong>Concéntrico 2026</strong>, proposta guanyadora de la categoria <strong>Identidad y Ficción</strong>.</p>
+                    <p>Gràcies a cada cos i a tot l'equip que va fer possible aquesta peça.</p>
+                </div>
+
+                <div id="text-en" class="description-content hidden">
+                    <p>It has been a wonderful experience. Every bearer who held a line on the Paseo del Espolón made <strong>El Plano Latente</strong> possible.</p>
+                    <p>Presented at <strong>Concéntrico 2026</strong>, winning proposal of the <strong>Identidad y Ficción</strong> category.</p>
+                    <p>Thank you to every body and the whole team that made this piece possible.</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Logroño, ES — Concéntrico 2026</p>
+            <p>Foto — Sara Cuerdo</p>
+        </footer>
+    </div>
+
+    <script>
+        function setLang(lang) {
+            document.querySelectorAll('[id^="lead-"], [id^="text-"]').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.lang-switch span').forEach(s => s.classList.remove('active'));
+
+            document.getElementById('lead-' + lang).classList.remove('hidden');
+            document.getElementById('text-' + lang).classList.remove('hidden');
+
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
