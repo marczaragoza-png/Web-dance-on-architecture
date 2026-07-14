@@ -4,262 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DANCING ON ARCHITECTURE</title>
+    <meta name="description" content="Dancing on Architecture — dance and architecture entwined in the body as measure, intersection and activator of space.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #ffffff;
-            --black: #000000;
-            --gray: #888888;
-            --accent: #f2ff00;
-            --grid-gap: 24px;
-            --size-title: 18px;
-            --size-manifesto: clamp(20px, 3.2vw, 34px);
-            --size-body: 14.5px;
-            --size-meta: 9px;
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body {
-            background: var(--bg);
-            color: var(--black);
-            font-family: 'Inter', 'Noto Sans SC', 'Noto Sans JP', sans-serif;
-            font-size: var(--size-body); 
-            line-height: 1.5;
-            padding: 64px 48px;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* --- ESTILOS DEL POP-UP --- */
-        #award-popup {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: var(--bg);
-            z-index: 9999;
-            overflow-y: auto;
-            padding: 64px 48px;
-            transition: opacity 0.5s ease; /* Transición suave */
-            display: none; 
-            opacity: 0;
-        }
-
-        .popup-inner {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            column-gap: var(--grid-gap);
-            border: 1px solid var(--black);
-            padding: 40px;
-            position: relative;
-            min-height: 80vh;
-            align-content: start;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 24px; right: 24px;
-            font-size: var(--size-meta);
-            font-weight: 700;
-            text-transform: uppercase;
-            cursor: pointer;
-            border-bottom: 1px solid var(--black);
-            z-index: 10;
-        }
-
-        .award-info { grid-column: 1 / span 12; margin-bottom: 32px; }
-        .award-badge { 
-            background: var(--accent); 
-            display: inline-block; 
-            padding: 4px 12px; 
-            font-size: var(--size-meta); 
-            font-weight: 700; 
-            text-transform: uppercase; 
-            margin-bottom: 16px;
-            letter-spacing: 0.05em;
-        }
-        
-        .we-won-title { 
-            font-size: clamp(60px, 12vw, 160px); 
-            font-weight: 900; 
-            line-height: 0.8; 
-            letter-spacing: -0.04em; 
-            text-transform: uppercase;
-            margin: 0;
-        }
-
-        .popup-video-container {
-            grid-column: 1 / span 8;
-            margin-bottom: 40px;
-        }
-        .popup-video-container video {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .popup-text-content {
-            grid-column: 9 / span 4;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-        }
-
-        .popup-text-content h2 {
-            font-size: var(--size-title);
-            text-transform: uppercase;
-            font-weight: 700;
-            margin-bottom: 16px;
-            border-top: 1px solid var(--black);
-            padding-top: 16px;
-        }
-
-        .popup-text-content p {
-            font-size: 13px;
-            margin-bottom: 24px;
-            max-width: 400px;
-        }
-
-        .doc-links a { 
-            display: block;
-            font-size: var(--size-meta); 
-            font-weight: 700; 
-            text-transform: uppercase; 
-            color: var(--black); 
-            text-decoration: none; 
-            border-bottom: 1px solid var(--black); 
-            padding-bottom: 4px; 
-            margin-bottom: 12px;
-            width: fit-content;
-            transition: 0.3s;
-        }
-        .doc-links a:hover { background: var(--black); color: #fff; }
-
-        /* --- ESTILOS DE LA WEB ORIGINAL --- */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            column-gap: var(--grid-gap);
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        header {
-            grid-column: 1 / span 12;
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 40px;
-            border-bottom: 1px solid var(--black);
-            padding-bottom: 8px;
-        }
-
-        h1 {
-            font-size: var(--size-title);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: -0.01em;
-        }
-
-        .lang-switch {
-            font-size: var(--size-meta);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .lang-switch span { cursor: pointer; color: var(--gray); transition: 0.2s; }
-        .lang-switch span.active { color: var(--black); text-decoration: underline; text-underline-offset: 4px; }
-        
-        /* Estilo especial para el asterisco */
-        .lang-switch span.trigger-popup {
-            font-size: 1.2em;
-            line-height: 0.8;
-            margin-right: 8px;
-            color: var(--black);
-        }
-        .lang-switch span.trigger-popup:hover {
-            color: var(--accent); /* Se ilumina en amarillo al pasar el ratón */
-        }
-
-        .hero-video {
-            grid-column: 1 / span 12;
-            margin-bottom: 80px;
-        }
-        video { width: 100%; height: auto; display: block; filter: grayscale(100%); transition: filter 0.8s ease; }
-        .hero-video:hover video { filter: grayscale(0%); }
-
-        .manifesto-text {
-            grid-column: 1 / span 9;
-            font-size: var(--size-manifesto);
-            font-weight: 400;
-            line-height: 1.15;
-            letter-spacing: -0.03em;
-            margin-bottom: 80px;
-        }
-
-        .description-content {
-            grid-column: 7 / span 6;
-            margin-bottom: 140px;
-        }
-        .description-content p { margin-bottom: 24px; }
-        .description-content strong { font-weight: 600; }
-
-        .archive-grid {
-            grid-column: 1 / span 12;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: flex-end;
-            gap: 48px var(--grid-gap);
-            border-top: 1px solid var(--black);
-            padding-top: 32px;
-            margin-bottom: 120px;
-        }
-
-        .plate { flex: 1 1 calc(25% - var(--grid-gap)); min-width: 250px; }
-        .plate-img img { width: 100%; height: auto; display: block; filter: grayscale(100%); transition: 0.5s; }
-        .plate:hover img { filter: grayscale(0%); }
-        .plate-label { font-size: var(--size-meta); font-weight: 600; text-transform: uppercase; color: var(--gray); border-top: 1px solid #eee; padding-top: 8px; }
-
-        footer {
-            grid-column: 1 / span 12;
-            border-top: 1px solid #eee;
-            padding-top: 32px;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: var(--grid-gap);
-        }
-        .footer-col h4 { font-size: var(--size-meta); font-weight: 700; text-transform: uppercase; color: var(--gray); margin-bottom: 16px; }
-        .footer-col p, .footer-col a { font-size: 11px; text-transform: uppercase; text-decoration: none; color: var(--black); line-height: 1.6; }
-
-        .hidden { display: none; }
-
-        @media (max-width: 900px) {
-            .grid { display: block; }
-            .popup-inner { display: flex; flex-direction: column; padding: 20px; }
-            .we-won-title { font-size: 80px; margin-bottom: 20px; }
-            .popup-video-container { grid-column: 1 / -1; width: 100%; margin-bottom: 20px; }
-            .popup-text-content { grid-column: 1 / -1; }
-            
-            .description-content { width: 100%; }
-            .plate { flex: 1 1 100%; }
-            footer { grid-template-columns: 1fr 1fr; row-gap: 32px; }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div id="award-popup">
         <div class="popup-inner">
-            <div class="close-btn" onclick="closePopup()">[ Close / Enter Site ]</div>
-            
+            <button class="close-btn" onclick="closePopup()">[ Close / Enter Site ]</button>
+
             <div class="award-info">
-                <div class="award-badge">Concéntrico 11</div>
+                <div class="award-badge">Concéntrico 12</div>
                 <div class="award-badge" style="background: transparent; border: 1px solid black; margin-left: 10px;">Cat: Identidad y ficción</div>
                 <h1 class="we-won-title">WE<br>WON</h1>
             </div>
@@ -273,9 +30,9 @@
 
             <div class="popup-text-content">
                 <h2>El Plano Latente</h2>
-                <p>Gracias Concéntrico por premiar nuestra propuesta para el Paseo del Espolón construye una <strong>ficción urbana</strong> donde el caminar cotidiano se transforma en identidad colectiva.</p>
+                <p>Gracias Concéntrico por premiar nuestra propuesta para el Paseo del Espolón: una <strong>ficción urbana</strong> donde el caminar cotidiano se transforma en identidad colectiva.</p>
                 <p>Un sistema que reivindica el cuerpo como medida, validador y referencia absoluta de la arquitectura.</p>
-                
+
                 <div class="doc-links">
                     <a href="El_plano_latente_01.pdf" target="_blank">Download Panel 01 / Score</a>
                     <a href="El_plano_latente_02.pdf" target="_blank">Download Panel 02 / Process</a>
@@ -288,85 +45,102 @@
         <header>
             <h1>Dancing on Architecture</h1>
             <nav class="lang-switch">
-                <!--projects in devangari numbers-->
-                <span class="trigger-popup" title="Dancing on Architectue 01">
-            <a href="https://vimeo.com/1169669148" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;">१</a>
-                </span>
-                <!--projects in devangari numbers-->
+                <a href="index.html" class="nav-link active" title="Home">0:</a>
+                <a href="1-estructura.html" class="nav-link" title="1: Structure">1:</a>
+                <a href="2-plano-latente.html" class="nav-link" title="2: El Plano Latente">2:</a>
+                <a href="3-paisaje.html" class="nav-link" title="3: Landscape">3:</a>
                 <span onclick="openPopup()" class="trigger-popup" title="View Award">§</span>
-                
-                <span onclick="setLang('en')" class="active">EN</span>
-                <span onclick="setLang('es')">ES</span>
-                <span onclick="setLang('ca')">CA</span>
-                <span onclick="setLang('fr')">FR</span>
-                <span onclick="setLang('de')">DE</span>
-                <span onclick="setLang('zh')">ZH</span>
-                <span onclick="setLang('jp')">JP</span>
+                <span class="nav-divider">|</span>
+                <span onclick="setLang('en', event)" data-setlang="en" class="lang-option active">EN</span>
+                <span onclick="setLang('es', event)" data-setlang="es" class="lang-option">ES</span>
+                <span onclick="setLang('ca', event)" data-setlang="ca" class="lang-option">CA</span>
+                <span onclick="setLang('fr', event)" data-setlang="fr" class="lang-option">FR</span>
+                <span onclick="setLang('de', event)" data-setlang="de" class="lang-option">DE</span>
+                <span onclick="setLang('zh', event)" data-setlang="zh" class="lang-option">ZH</span>
+                <span onclick="setLang('jp', event)" data-setlang="jp" class="lang-option">JP</span>
             </nav>
         </header>
 
-        <section class="hero-video">
-            <video autoplay muted loop playsinline>
-                <source src="circle.mp4" type="video/mp4">
-            </video>
-        </section>
+        <!-- MANIFESTO -->
+        <div class="manifesto-text i18n" data-lang="en">A phrase nobody quite owns opens this: "writing about music is like dancing on architecture." Ask five people and you'll get five names — Monk, Zappa, Costello, Lennon — and no answer. It may never have been more than a joke. This collective takes it at face value, and takes its name from it.</div>
+        <div class="manifesto-text i18n hidden" data-lang="es">Todo esto empieza con una frase que nadie termina de poseer: «escribir sobre música es como bailar sobre arquitectura». Pregunta a cinco personas y obtendrás cinco nombres —Monk, Zappa, Costello, Lennon— y ninguna respuesta. Puede que nunca haya sido más que una broma. Este colectivo se la toma al pie de la letra, y de ahí toma su nombre.</div>
+        <div class="manifesto-text i18n hidden" data-lang="ca">Tot això comença amb una frase que ningú no acaba de posseir: «escriure sobre música és com ballar sobre arquitectura». Pregunta a cinc persones i obtindràs cinc noms —Monk, Zappa, Costello, Lennon— i cap resposta. Potser mai no ha estat més que una broma. Aquest col·lectiu se la pren al peu de la lletra, i d'aquí en pren el nom.</div>
+        <div class="manifesto-text i18n hidden" data-lang="fr">Tout commence par une phrase que personne ne possède vraiment : « écrire sur la musique, c'est comme danser sur l'architecture ». Demandez à cinq personnes et vous obtiendrez cinq noms — Monk, Zappa, Costello, Lennon — et aucune réponse. Ce n'a peut-être jamais été qu'une blague. Ce collectif la prend au pied de la lettre, et y puise son nom.</div>
+        <div class="manifesto-text i18n hidden" data-lang="de">Das hier beginnt mit einem Satz, den niemand so recht für sich beanspruchen kann: „Über Musik zu schreiben ist wie Tanzen auf Architektur." Fragt man fünf Menschen, bekommt man fünf Namen — Monk, Zappa, Costello, Lennon — und keine Antwort. Vielleicht war es nie mehr als ein Scherz. Dieses Kollektiv nimmt ihn beim Wort und entlehnt ihm seinen Namen.</div>
+        <div class="manifesto-text i18n hidden" data-lang="zh">一切始于一句没有人真正拥有的话："写音乐评论就像在建筑上跳舞。"问五个人，你会得到五个名字——蒙克、扎帕、科斯特洛、列侬——却没有答案。它或许从来只是一句玩笑。这个集体却把它当真，并以此为名。</div>
+        <div class="manifesto-text i18n hidden" data-lang="jp">これはすべて、誰のものとも言い切れない一つの言葉から始まる——「音楽について書くことは、建築の上で踊るようなものだ」。五人に尋ねれば五つの名前が返ってくる——モンク、ザッパ、コステロ、レノン——そして答えは出ない。それはただの冗談以上のものではなかったのかもしれない。このコレクティブはその言葉を真に受け、そこから自らの名を取った。</div>
 
-        <div id="lead-en" class="manifesto-text">Architecture is not the tectonic mass, but the interval. A latent system that finds its ontological validation only through the motor impulse of the body.</div>
-        <div id="lead-es" class="manifesto-text hidden">La arquitectura no es la masa tectónica, sino el intervalo. Un sistema latente que encuentra su validación ontológica solo a través del impulso motor del cuerpo.</div>
-        <div id="lead-ca" class="manifesto-text hidden">L'arquitectura no és la massa tectònica, sinó l'interval. Un sistema latent que troba la seva validació ontològica només a través de l'impuls motor del cos.</div>
-        <div id="lead-fr" class="manifesto-text hidden">L'architecture n'est pas la masse tectonique, mais l'intervalle. Un système latent qui ne trouve sa validation ontologique qu'à travers l'impulsion motrice du corps.</div>
-        <div id="lead-de" class="manifesto-text hidden">Architektur ist nicht die tektonische Masse, sondern das Intervall. Ein latentes System, das seine ontologische Bestätigung erst durch den motorischen Impuls des Körpers findet.</div>
-        <div id="lead-zh" class="manifesto-text hidden">建筑并非构造的实体，而是其间的空隙。这一潜在系统唯有通过身体的运动冲动，方能获得其存在论上的确证。</div>
-        <div id="lead-jp" class="manifesto-text hidden">建築とは構造物そのものではなく、その「間」にある。身体の運動衝動を通じて初めて、その存在論的な正当性を見出す潜在的なシステムである。</div>
-
-        <div id="text-en" class="description-content">
-            <p>Conceived and coordinated by <strong>Marc Zaragoza</strong>, the collective operates at the threshold where theoretical speculation converges with technical rigor. The intervention is fundamentally activated by the kinetic grammar of <strong>Wonderground</strong> (Tom Weksler and Roser Tutusaus). Their choreographic systems function as a live infrastructure, utilizing high-velocity precision to govern the tempo and flux of the void.</p>
-            <p>This kinetic force is housed within the tectonic environments defined by <strong>m-i-r-a arquitectura</strong> (Dori Sadan, Niccolò Marini, and Marga Ruiz). The project emerges from this horizontal synergy, supported by the conceptual subversion of <strong>Poética Beligerante</strong> (with Marga Ruiz), reclaiming the body as an active structural agent.</p>
-            <p>Currently, in collaboration with filmmaker <strong>Ignasi Castañé</strong>, the project develops a series of documentary screendance works in spaces under construction (WIP), drafting a cartographical record of the invisible.</p>
+        <!-- TEAM / STATEMENT -->
+        <div class="description-content i18n" data-lang="en">
+            <p>Architecture speaks to the body from the outside: it presses, withholds, resists — a wall does not ask permission before it becomes a limit. Dance speaks to the body from the inside: an impulse, felt before it is understood, moving before it has decided to. <strong>Marc Zaragoza</strong>, an architect, founded this collective with <strong>Roser Tutusaus</strong> and <strong>Tom Weksler</strong>, both dancers, to stand exactly where those two languages cross. The body doesn't choose between them. The body is where they become one sentence.</p>
+            <p>The work moves through three scales, and each one changes what the body is asked to be. 1: the domestic — one body alone inside architecture, the intimacy of a single room negotiating with a single presence. 2: the civic — bodies together in public space, no longer a solitude but a crowd learning to move as one structure. 3: the natural — the body no longer set against matter but absorbed into it, landscape not as backdrop but as the thing the body dissolves into, the scale where the human stops being the measure of anything. Intimacy, community, anthropocene: three sizes of the same question.</p>
+            <p>Nothing here repeats. A space presses in, a body pushes out, and for one unrepeatable stretch of time the two speak at once — that meeting has no draft, no second take, no version to correct. What survives on film is only the shadow the moment leaves behind, the way a footprint outlives a step. The document remembers an hour. The hour itself is already gone.</p>
+        </div>
+        <div class="description-content i18n hidden" data-lang="es">
+            <p>La arquitectura le habla al cuerpo desde fuera: presiona, retiene, resiste —un muro no pide permiso antes de convertirse en límite—. La danza le habla al cuerpo desde dentro: un impulso, sentido antes de ser entendido, en movimiento antes de haber decidido moverse. <strong>Marc Zaragoza</strong>, arquitecto, fundó este colectivo junto a <strong>Roser Tutusaus</strong> y <strong>Tom Weksler</strong>, ambos bailarines, para situarse justo donde esos dos lenguajes se cruzan. El cuerpo no elige entre ellos. El cuerpo es el lugar donde se convierten en una sola frase.</p>
+            <p>El trabajo atraviesa tres escalas, y cada una cambia lo que se le pide al cuerpo que sea. 1: lo doméstico —un cuerpo solo dentro de la arquitectura, la intimidad de una única habitación negociando con una única presencia—. 2: lo cívico —cuerpos juntos en el espacio público, ya no una soledad sino una multitud aprendiendo a moverse como una sola estructura—. 3: lo natural —el cuerpo ya no enfrentado a la materia, sino absorbido por ella; el paisaje no como telón de fondo, sino como aquello en lo que el cuerpo se disuelve; la escala en la que lo humano deja de ser medida de nada—. Intimidad, comunidad, antropoceno: tres tamaños de la misma pregunta.</p>
+            <p>Aquí nada se repite. Un espacio presiona hacia dentro, un cuerpo empuja hacia fuera, y durante un tramo irrepetible de tiempo ambos hablan a la vez —ese encuentro no tiene borrador, ni segunda toma, ni versión que corregir—. Lo que sobrevive en la película es solo la sombra que deja el instante, del mismo modo que una huella sobrevive al paso que la dejó. El documento recuerda una hora. La hora misma ya se ha ido.</p>
+        </div>
+        <div class="description-content i18n hidden" data-lang="ca">
+            <p>L'arquitectura parla al cos des de fora: pressiona, reté, resisteix —un mur no demana permís abans de convertir-se en límit—. La dansa parla al cos des de dins: un impuls, sentit abans de ser entès, en moviment abans d'haver decidit moure's. <strong>Marc Zaragoza</strong>, arquitecte, va fundar aquest col·lectiu juntament amb <strong>Roser Tutusaus</strong> i <strong>Tom Weksler</strong>, tots dos ballarins, per situar-se just on aquests dos llenguatges es creuen. El cos no tria entre ells. El cos és el lloc on esdevenen una sola frase.</p>
+            <p>El treball travessa tres escales, i cadascuna canvia allò que es demana al cos que sigui. 1: el domèstic —un cos sol dins l'arquitectura, la intimitat d'una única habitació negociant amb una única presència—. 2: el cívic —cossos junts a l'espai públic, ja no una solitud sinó una multitud aprenent a moure's com una sola estructura—. 3: el natural —el cos ja no enfrontat a la matèria, sinó absorbit per ella; el paisatge no com a teló de fons, sinó com allò en què el cos es dissol; l'escala en què l'humà deixa de ser mesura de res—. Intimitat, comunitat, antropocè: tres mides de la mateixa pregunta.</p>
+            <p>Aquí res no es repeteix. Un espai pressiona cap a dins, un cos empeny cap a fora, i durant un tram irrepetible de temps tots dos parlen alhora —aquesta trobada no té esborrany, ni segona presa, ni versió a corregir—. El que sobreviu a la pel·lícula és només l'ombra que deixa l'instant, de la mateixa manera que una petjada sobreviu el pas que la va deixar. El document recorda una hora. L'hora mateixa ja ha marxat.</p>
+        </div>
+        <div class="description-content i18n hidden" data-lang="fr">
+            <p>L'architecture parle au corps depuis l'extérieur : elle presse, retient, résiste — un mur ne demande pas la permission avant de devenir une limite. La danse parle au corps depuis l'intérieur : une impulsion, ressentie avant d'être comprise, en mouvement avant même d'avoir décidé de bouger. <strong>Marc Zaragoza</strong>, architecte, a fondé ce collectif avec <strong>Roser Tutusaus</strong> et <strong>Tom Weksler</strong>, tous deux danseurs, pour se tenir exactement là où ces deux langages se croisent. Le corps ne choisit pas entre eux. Le corps est l'endroit où ils deviennent une seule phrase.</p>
+            <p>Le travail traverse trois échelles, et chacune change ce qu'on demande au corps d'être. 1 : le domestique — un corps seul dans l'architecture, l'intimité d'une seule pièce négociant avec une seule présence. 2 : le civique — des corps ensemble dans l'espace public, non plus une solitude mais une foule apprenant à se mouvoir comme une seule structure. 3 : le naturel — le corps non plus opposé à la matière mais absorbé par elle, le paysage non comme toile de fond mais comme ce dans quoi le corps se dissout, l'échelle où l'humain cesse d'être la mesure de quoi que ce soit. Intimité, communauté, anthropocène : trois tailles d'une même question.</p>
+            <p>Rien ici ne se répète. Un espace presse vers l'intérieur, un corps pousse vers l'extérieur, et pendant un laps de temps irremplaçable les deux parlent en même temps — cette rencontre n'a ni brouillon, ni deuxième prise, ni version à corriger. Ce qui survit sur la pellicule n'est que l'ombre que l'instant laisse derrière lui, tout comme une empreinte survit au pas qui l'a laissée. Le document se souvient d'une heure. L'heure elle-même est déjà partie.</p>
+        </div>
+        <div class="description-content i18n hidden" data-lang="de">
+            <p>Architektur spricht von außen zum Körper: sie drückt, verweigert, widersteht — eine Mauer fragt nicht um Erlaubnis, bevor sie zur Grenze wird. Tanz spricht von innen zum Körper: ein Impuls, gespürt bevor er verstanden wird, in Bewegung, bevor er sich dazu entschieden hat. <strong>Marc Zaragoza</strong>, Architekt, gründete dieses Kollektiv gemeinsam mit <strong>Roser Tutusaus</strong> und <strong>Tom Weksler</strong>, beide Tänzer, um genau dort zu stehen, wo sich diese beiden Sprachen kreuzen. Der Körper wählt nicht zwischen ihnen. Der Körper ist der Ort, an dem sie zu einem einzigen Satz werden.</p>
+            <p>Die Arbeit durchläuft drei Maßstäbe, und jeder verändert, was vom Körper verlangt wird zu sein. 1: das Häusliche — ein Körper allein in der Architektur, die Intimität eines einzigen Raums, der mit einer einzigen Präsenz verhandelt. 2: das Bürgerliche — Körper gemeinsam im öffentlichen Raum, nicht mehr Einsamkeit, sondern eine Menge, die lernt, sich als eine einzige Struktur zu bewegen. 3: das Natürliche — der Körper nicht mehr der Materie entgegengesetzt, sondern von ihr aufgenommen, die Landschaft nicht als Kulisse, sondern als das, worin sich der Körper auflöst, der Maßstab, in dem der Mensch aufhört, das Maß von irgendetwas zu sein. Intimität, Gemeinschaft, Anthropozän: drei Größen derselben Frage.</p>
+            <p>Hier wiederholt sich nichts. Ein Raum drückt hinein, ein Körper drückt hinaus, und für eine nicht wiederholbare Zeitspanne sprechen beide zugleich — diese Begegnung hat keinen Entwurf, keine zweite Aufnahme, keine Fassung zum Korrigieren. Was auf dem Film überlebt, ist nur der Schatten, den der Moment hinterlässt, so wie ein Fußabdruck den Schritt überlebt, der ihn hinterließ. Das Dokument erinnert sich an eine Stunde. Die Stunde selbst ist bereits vergangen.</p>
+        </div>
+        <div class="description-content i18n hidden" data-lang="zh">
+            <p>建筑从外部对身体说话：它施压、抑制、抵抗——一堵墙在成为界限之前不会征求许可。舞蹈从内部对身体说话：一种冲动，先被感知才被理解，先运动才做出决定。建筑师 <strong>Marc Zaragoza</strong> 与两位舞者 <strong>Roser Tutusaus</strong> 和 <strong>Tom Weksler</strong> 共同创立了这个集体，正是为了立足于这两种语言交汇之处。身体不在两者之间做选择。身体，正是它们合而为一句话的地方。</p>
+            <p>这项工作穿越三种尺度，每一种都改变了对身体的要求。1：家庭尺度——身体独自处于建筑之中，一间房的亲密与一个存在协商。2：公民尺度——身体共同处于公共空间，不再是孤独，而是一群人学习作为一个整体结构运动。3：自然尺度——身体不再与物质对立，而是被其吸纳；风景不是背景，而是身体消融于其中之物；在这一尺度上，人不再是任何事物的尺度。亲密、社群、人类世：同一个问题的三种大小。</p>
+            <p>这里没有什么会重复。一个空间向内挤压，一个身体向外推出，在这段无法重来的时间里，两者同时发声——这场相遇没有草稿，没有第二次拍摄，没有可以修正的版本。留存在胶片上的，只是那一刻留下的影子，就像脚印比脚步本身更长久。文献记住的是一个小时。而那一个小时本身，早已消逝。</p>
+        </div>
+        <div class="description-content i18n hidden" data-lang="jp">
+            <p>建築は外側から身体に語りかける——押し、拒み、抗う。壁は限界となる前に許可を求めたりはしない。ダンスは内側から身体に語りかける——理解される前に感じられる衝動、決意する前に動き出す動き。建築家である <strong>Marc Zaragoza</strong> は、ダンサーである <strong>Roser Tutusaus</strong> と <strong>Tom Weksler</strong> とともに、この二つの言語が交わるまさにその場所に立つべく、このコレクティブを設立した。身体はその二つのどちらかを選ぶことはない。身体こそが、両者が一つの文になる場所なのだ。</p>
+            <p>この作品は三つのスケールを通過し、そのそれぞれが身体に何であることを求めるかを変える。1：家庭的スケール——建築の中にただ一人いる身体、一つの部屋の親密さが一つの存在と交渉する。2：市民的スケール——公共空間に共にある身体、もはや孤独ではなく、一つの構造として動くことを学ぶ群衆。3：自然的スケール——もはや物質と対峙するのではなく、それに吸収される身体。風景は背景ではなく、身体がその中へと溶けていくものであり、人間があらゆるものの尺度であることをやめるスケール。親密さ、共同体、人新世——同じ問いの三つの大きさ。</p>
+            <p>ここでは何も繰り返されない。空間が内側へ押し、身体が外側へ押し返す。二度と繰り返せないその一瞬の間、両者は同時に語る——その出会いには下書きもなければ、二度目のテイクも、修正すべき別バージョンもない。フィルムに残るのは、その瞬間が残していく影だけである——足跡が、それを刻んだ一歩よりも長く残るように。記録は一時間を記憶する。だが、その一時間そのものは、すでに過ぎ去っている。</p>
         </div>
 
-        <div id="text-es" class="description-content hidden">
-            <p>Ideado y coordinado por <strong>Marc Zaragoza</strong>, el colectivo opera en el umbral donde la especulación teórica converge con el rigor técnico. La intervención es activada fundamentalmente por la gramática cinética de <strong>Wonderground</strong> (Tom Weksler y Roser Tutusaus). Sus sistemas coreográficos funcionan como una infraestructura viva que utiliza la precisión de alta velocidad para gobernar el flujo del vacío.</p>
-            <p>Esta fuerza cinética se aloja en los entornos tectónicos definidos por <strong>m-i-r-a arquitectura</strong> (Dori Sadan, Niccolò Marini y Marga Ruiz). El proyecto nace de esta sinergia horizontal, apoyada por la subversión conceptual de <strong>Poética Beligerante</strong> (con Marga Ruiz), reivindicando el cuerpo como agente estructural activo.</p>
-            <p>Actualmente, en colaboración con el cineasta <strong>Ignasi Castañé</strong>, el proyecto desarrolla una serie de trabajos de screendance documental en espacios en construcción, trazando un registro cartográfico de lo invisible.</p>
-        </div>
 
-        <div id="text-ca" class="description-content hidden">
-            <p>Ideat i coordinat per <strong>Marc Zaragoza</strong>, el col·lectiu opera a l'umbral on l'especulació teòrica convergeix amb el rigor tècnic. La intervenció és activada fonamentalment per la gramàtica cinètica de <strong>Wonderground</strong> (Tom Weksler i Roser Tutusaus). Els seus sistemes coreogràfics funcionen com una infraestructura viva que utilitza la precisió d'alta velocitat per governar el flux del buit.</p>
-            <p>Aquesta força cinètica s'allotja en els entorns tectònics definits per <strong>m-i-r-a arquitectura</strong> (Dori Sadan, Niccolò Marini i Marga Ruiz). El projecte neix d'aquesta sinergia horitzontal, amb la subversió conceptual de <strong>Poética Beligerante</strong> (amb Marga Ruiz), reivindicant el cos com a agent estructural actiu.</p>
-            <p>Actualment, en col·laboració amb el cineasta <strong>Ignasi Castañé</strong>, el projecte desenvolupa una sèrie de treballs de screendance documental en espais en construcció, traçant un registre cartogràfic de l'invisible.</p>
+        <!-- THREE AMBITS -->
+        <div class="hero-triad">
+            <a href="1-estructura.html" class="triad-tile">
+                <img src="1_structure__1_.jpg" alt="1: Structure">
+                <div class="triad-label i18n" data-lang="en">1: Structure — intimate scale</div>
+                <div class="triad-label i18n hidden" data-lang="es">1: Estructura — escala íntima</div>
+                <div class="triad-label i18n hidden" data-lang="ca">1: Estructura — escala íntima</div>
+                <div class="triad-label i18n hidden" data-lang="fr">1: Structure — échelle intime</div>
+                <div class="triad-label i18n hidden" data-lang="de">1: Struktur — intime Maßstäblichkeit</div>
+                <div class="triad-label i18n hidden" data-lang="zh">1: 结构 — 亲密尺度</div>
+                <div class="triad-label i18n hidden" data-lang="jp">1: 構造 — 親密なスケール</div>
+            </a>
+            <a href="2-plano-latente.html" class="triad-tile">
+                <img src="2_plano-latente__1_.JPG" alt="2: El Plano Latente">
+                <div class="triad-label i18n" data-lang="en">2: The Latent Plane — public space</div>
+                <div class="triad-label i18n hidden" data-lang="es">2: El Plano Latente — espacio público</div>
+                <div class="triad-label i18n hidden" data-lang="ca">2: El Pla Latent — espai públic</div>
+                <div class="triad-label i18n hidden" data-lang="fr">2: Le Plan Latent — espace public</div>
+                <div class="triad-label i18n hidden" data-lang="de">2: Die Latente Ebene — öffentlicher Raum</div>
+                <div class="triad-label i18n hidden" data-lang="zh">2: 潜在之面 — 公共空间</div>
+                <div class="triad-label i18n hidden" data-lang="jp">2: 潜在する図面 — 公共空間</div>
+            </a>
+            <a href="3-paisaje.html" class="triad-tile">
+                <img src="garraf__3_.jpg" alt="3: Landscape">
+                <div class="triad-label i18n" data-lang="en">3: Landscape — in development</div>
+                <div class="triad-label i18n hidden" data-lang="es">3: Paisaje — en desarrollo</div>
+                <div class="triad-label i18n hidden" data-lang="ca">3: Paisatge — en desenvolupament</div>
+                <div class="triad-label i18n hidden" data-lang="fr">3: Paysage — en développement</div>
+                <div class="triad-label i18n hidden" data-lang="de">3: Landschaft — in Entwicklung</div>
+                <div class="triad-label i18n hidden" data-lang="zh">3: 风景 — 研发中</div>
+                <div class="triad-label i18n hidden" data-lang="jp">3: 風景 — 開発中</div>
+            </a>
         </div>
-
-        <div id="text-fr" class="description-content hidden">
-            <p>Conçu et coordonné par <strong>Marc Zaragoza</strong>, le collectif opère au seuil où la spéculation théorique converge avec la rigueur technique. L'intervention est fondamentalement activée par la grammaire cinétique de <strong>Wonderground</strong> (Tom Weksler et Roser Tutusaus). Leurs systèmes chorégraphiques fonctionnent comme une infrastructure vivante, utilisant la précision à haute vitesse pour régir le flux du vide.</p>
-            <p>Cette force cinétique est abritée au sein des environnements tectoniques définis par <strong>m-i-r-a arquitectura</strong> (Dori Sadan, Niccolò Marini et Marga Ruiz). Le projet émerge de cette synergie horizontale, soutenue par la subversion conceptuelle de <strong>Poética Beligerante</strong> (avec Marga Ruiz), revendiquant le corps comme agent structurel actif.</p>
-            <p>Actuellement, en collaboration avec le cinéaste <strong>Ignasi Castañé</strong>, le projet développe une série d'œuvres de vidéodanse documentaire dans des espaces en construction, traçant un registre cartographique de l'invisible.</p>
-        </div>
-
-        <div id="text-de" class="description-content hidden">
-            <p>Konzipiert und koordiniert von <strong>Marc Zaragoza</strong>, agiert das Kollektiv an der Schnittstelle, wo theoretische Spekulation auf technische Präzision trifft. Die Intervention wird primär durch die kinetische Grammatik von <strong>Wonderground</strong> (Tom Weksler und Roser Tutusaus) aktiviert. Ihre choreografischen Systeme fungieren als lebendige Infrastruktur, die mit Hochgeschwindigkeitspräzision den Fluss des Leerraums steuert.</p>
-            <p>Diese kinetische Kraft ist in den tektonischen Umgebungen von <strong>m-i-r-a arquitectura</strong> (Dori Sadan, Niccolò Marini und Marga Ruiz) eingebettet. Das Projekt entsteht aus dieser horizontalen Synergie, unterstützt durch die konzeptionelle Subversion von <strong>Poética Beligerante</strong> (mit Marga Ruiz), die den Körper als aktiven strukturellen Akteur zurückfordert.</p>
-            <p>Derzeit entwickelt das Projekt in Zusammenarbeit mit dem Filmemacher <strong>Ignasi Castañé</strong> eine Reihe von dokumentarischen Tanzvideos in Baustellen-Räumen und zeichnet so eine kartografische Aufzeichnung des Unsichtbaren.</p>
-        </div>
-
-        <div id="text-zh" class="description-content hidden">
-            <p>由 <strong>Marc Zaragoza</strong> 构思并协调，该集体活跃于理论思辨与技术严谨性相融合的边缘。干预行动主要由 <strong>Wonderground</strong>（Tom Weksler 与 Roser Tutusaus）的动力语法激活。他们的编舞系统作为一种动态基础设施，利用高速精准性来管控空间的节奏与流动。</p>
-            <p>这种动力存在于由 <strong>m-i-r-a arquitectura</strong>（Dori Sadan、Niccolò Marini 与 Marga Ruiz）定义的构造环境中。该项目诞生于这种水平协作，并辅以 <strong>Poética Beligerante</strong>（与 Marga Ruiz）的概念颠覆，将身体重塑为主动的结构媒介。</p>
-            <p>目前，与电影制作人 <strong>Ignasi Castañé</strong> 合作，该项目正在开发一系列关于施工中空间的纪录影像作品，绘制不可见空间的制图记录。</p>
-        </div>
-
-        <div id="text-jp" class="description-content hidden">
-            <p><strong>Marc Zaragoza</strong> によって構想・調整されたこのコレクティブは、理論的思索と技術的厳格さが交差する境界で活動しています。その介入は、主に <strong>Wonderground</strong> (Tom Weksler と Roser Tutusaus) のキネティックな文法によって活性化されます。彼らの振付システムは、高速な精度を用いて空隙のテンポと流れを支配する、生きたインフラとして機能します。</p>
-            <p>この動力は、<strong>m-i-r-a arquitectura</strong> (Dori Sadan, Niccolò Marini, Marga Ruiz) によって定義されたテクトニックな環境の中に収められています。本プロジェクトは、身体を能動的な構造的エージェントとして再定義する <strong>Poética Beligerante</strong> (Marga Ruiz と共に) の概念的転覆に支えられ、水平的なシナジーから生まれます。</p>
-            <p>現在、映像作家の <strong>Ignasi Castañé</strong> との協力により、建設中の空間を舞台にしたドキュメンタリー・スクリーンダンス作品を制作中であり、「見えないもの」の地図記録を試みています。</p>
-        </div>
-
-        <section class="archive-grid">
-            <div class="plate"><div class="plate-img"><img src="Dance.on.architecture-PIC-by-Igni-Castanye.jpg"></div><p class="plate-label">Plate 01 / Context</p></div>
-            <div class="plate"><div class="plate-img"><img src="IMG_20250928_120952.jpg"></div><p class="plate-label">Plate 02 / Tension</p></div>
-            <div class="plate"><div class="plate-img"><img src="frame_069.jpg"></div><p class="plate-label">Plate 03 / Detail</p></div>
-            <div class="plate"><div class="plate-img"><img src="frame_019.jpg"></div><p class="plate-label">Plate 04 / Alignment</p></div>
-        </section>
 
         <footer>
             <div class="footer-col"><h4>Status</h4><p>Ongoing Research<br>Barcelona, ES / 2026</p></div>
@@ -376,30 +150,6 @@
         </footer>
     </div>
 
-    <script>
-        function closePopup() {
-            const popup = document.getElementById('award-popup');
-            popup.style.opacity = '0';
-            setTimeout(() => { popup.style.display = 'none'; }, 500);
-        }
-
-        function openPopup() {
-            const popup = document.getElementById('award-popup');
-            popup.style.display = 'block';
-            // Pequeño timeout para permitir que el display:block se renderice antes de cambiar la opacidad
-            setTimeout(() => { popup.style.opacity = '1'; }, 10);
-        }
-
-        function setLang(lang) {
-            document.querySelectorAll('[id^="lead-"], [id^="text-"]').forEach(el => el.classList.add('hidden'));
-            document.querySelectorAll('.lang-switch span:not(.trigger-popup)').forEach(s => s.classList.remove('active'));
-            
-            document.getElementById('lead-' + lang).classList.remove('hidden');
-            const content = document.getElementById('text-' + lang);
-            if(content) content.classList.remove('hidden');
-            
-            event.target.classList.add('active');
-        }
-    </script>
+    <script src="common.js"></script>
 </body>
 </html>

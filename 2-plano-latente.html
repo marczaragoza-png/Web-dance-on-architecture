@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2: El Plano Latente — Dancing on Architecture</title>
+    <meta name="description" content="2: El Plano Latente — a citizen choreography awarded at Concéntrico 12, turning everyday walking into collective identity.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="award-popup">
+        <div class="popup-inner">
+            <button class="close-btn" onclick="closePopup()">[ Close / Enter Site ]</button>
+            <div class="award-info">
+                <div class="award-badge">Concéntrico 12</div>
+                <div class="award-badge" style="background: transparent; border: 1px solid black; margin-left: 10px;">Cat: Identidad y ficción</div>
+                <h1 class="we-won-title">WE<br>WON</h1>
+            </div>
+            <div class="popup-video-container">
+                <video autoplay muted loop playsinline>
+                    <source src="Animacion_Latente_Fisica.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="popup-text-content">
+                <h2>El Plano Latente</h2>
+                <p>Gracias Concéntrico por premiar nuestra propuesta para el Paseo del Espolón: una <strong>ficción urbana</strong> donde el caminar cotidiano se transforma en identidad colectiva.</p>
+                <p>Un sistema que reivindica el cuerpo como medida, validador y referencia absoluta de la arquitectura.</p>
+                <div class="doc-links">
+                    <a href="El_plano_latente_01.pdf" target="_blank">Download Panel 01 / Score</a>
+                    <a href="El_plano_latente_02.pdf" target="_blank">Download Panel 02 / Process</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid">
+        <header>
+            <h1>Dancing on Architecture</h1>
+            <nav class="lang-switch">
+                <a href="index.html" class="nav-link" title="Home">0:</a>
+                <a href="1-estructura.html" class="nav-link" title="1: Structure">1:</a>
+                <a href="2-plano-latente.html" class="nav-link active" title="2: El Plano Latente">2:</a>
+                <a href="3-paisaje.html" class="nav-link" title="3: Landscape">3:</a>
+                <span onclick="openPopup()" class="trigger-popup" title="View Award">§</span>
+                <span class="nav-divider">|</span>
+                <span onclick="setLang('en', event)" data-setlang="en" class="lang-option active">EN</span>
+                <span onclick="setLang('es', event)" data-setlang="es" class="lang-option">ES</span>
+                <span onclick="setLang('ca', event)" data-setlang="ca" class="lang-option">CA</span>
+                <span onclick="setLang('fr', event)" data-setlang="fr" class="lang-option">FR</span>
+                <span onclick="setLang('de', event)" data-setlang="de" class="lang-option">DE</span>
+                <span onclick="setLang('zh', event)" data-setlang="zh" class="lang-option">ZH</span>
+                <span onclick="setLang('jp', event)" data-setlang="jp" class="lang-option">JP</span>
+            </nav>
+        </header>
+
+        <section class="hero-image">
+            <img src="2_plano-latente__1_.JPG" alt="2: El Plano Latente — performers walking in formation">
+        </section>
+
+        <!-- MANIFESTO -->
+        <div class="manifesto-text i18n" data-lang="en">A thousand steps become one gesture: the city is not walked, it is choreographed together.</div>
+        <div class="manifesto-text i18n hidden" data-lang="es">Mil pasos se convierten en un solo gesto: la ciudad no se camina, se coreografía en comunidad.</div>
+        <div class="manifesto-text i18n hidden" data-lang="ca">Mil passos esdevenen un sol gest: la ciutat no es camina, es coreografia en comunitat.</div>
+        <div class="manifesto-text i18n hidden" data-lang="fr">Mille pas deviennent un seul geste : la ville ne se marche pas, elle se chorégraphie ensemble.</div>
+        <div class="manifesto-text i18n hidden" data-lang="de">Tausend Schritte werden zu einer einzigen Geste: die Stadt wird nicht begangen, sie wird gemeinsam choreografiert.</div>
+        <div class="manifesto-text i18n hidden" data-lang="zh">千步汇成一个手势：城市不是被行走的，而是被共同编舞的。</div>
+        <div class="manifesto-text i18n hidden" data-lang="jp">千の歩みが一つの身振りとなる。都市は歩かれるのではなく、共に振り付けられる。</div>
+
+        <!-- DESCRIPTION -->
+        <div class="description-content i18n" data-lang="en">
+            <p>This second field turns to public space — society, bodies in contact, community. Here the operation is to build architectures of community using the body itself as material and instrument.</p>
+            <p>The first exploration in this line is <strong>2: The Latent Plane</strong>, awarded at Concéntrico 12 (2026): a citizen choreography where everyday walking becomes collective identity, and the body becomes the absolute measure and validator of the city.</p>
+            <p>Dozens of participants — the "portadores" — walked, fell, and rose together along the Paseo del Espolón in Logroño, turning an ordinary promenade into a shared architectural score.</p>
+            <a href="https://concentrico.es/el-plano-latente/" target="_blank" class="link-cta">View project at Concéntrico</a>
+        </div>
+        <div class="description-content i18n hidden" data-lang="es">
+            <p>Este segundo campo se dirige al espacio público: sociedad, cuerpos en contacto, comunidad. Aquí la operación consiste en construir arquitecturas de comunidad usando el propio cuerpo como material e instrumento.</p>
+            <p>La primera exploración de esta línea es <strong>2: El Plano Latente</strong>, galardonada en Concéntrico 12 (2026): una coreografía ciudadana donde el caminar cotidiano se transforma en identidad colectiva, y el cuerpo se convierte en medida y validador absoluto de la ciudad.</p>
+            <p>Decenas de participantes —los "portadores"— caminaron, cayeron y se levantaron juntos por el Paseo del Espolón de Logroño, convirtiendo un paseo cualquiera en una partitura arquitectónica compartida.</p>
+            <a href="https://concentrico.es/el-plano-latente/" target="_blank" class="link-cta">Ver proyecto en Concéntrico</a>
+        </div>
+        <div class="description-content i18n hidden" data-lang="ca">
+            <p>Aquest segon camp es dirigeix a l'espai públic: societat, cossos en contacte, comunitat. Aquí l'operació consisteix a construir arquitectures de comunitat usant el propi cos com a material i instrument.</p>
+            <p>La primera exploració d'aquesta línia és <strong>2: El Pla Latent</strong>, guardonada a Concéntrico 12 (2026): una coreografia ciutadana on el caminar quotidià es transforma en identitat col·lectiva, i el cos esdevé mesura i validador absolut de la ciutat.</p>
+            <p>Desenes de participants —els "portadores"— van caminar, caure i aixecar-se junts pel Paseo del Espolón de Logronyo, convertint un passeig qualsevol en una partitura arquitectònica compartida.</p>
+            <a href="https://concentrico.es/el-plano-latente/" target="_blank" class="link-cta">Veure el projecte a Concéntrico</a>
+        </div>
+        <div class="description-content i18n hidden" data-lang="fr">
+            <p>Ce second champ se tourne vers l'espace public : société, corps en contact, communauté. Ici, l'opération consiste à construire des architectures de communauté en utilisant le corps lui-même comme matière et instrument.</p>
+            <p>La première exploration de cette ligne est <strong>2: Le Plan Latent</strong>, primée à Concéntrico 12 (2026) : une chorégraphie citoyenne où la marche quotidienne se transforme en identité collective, et le corps devient la mesure et le validateur absolu de la ville.</p>
+            <p>Des dizaines de participants — les « porteurs » — ont marché, sont tombés et se sont relevés ensemble le long du Paseo del Espolón à Logroño, transformant une promenade ordinaire en partition architecturale partagée.</p>
+            <a href="https://concentrico.es/el-plano-latente/" target="_blank" class="link-cta">Voir le projet sur Concéntrico</a>
+        </div>
+        <div class="description-content i18n hidden" data-lang="de">
+            <p>Dieses zweite Feld wendet sich dem öffentlichen Raum zu: Gesellschaft, Körper in Kontakt, Gemeinschaft. Hier besteht die Operation darin, Architekturen der Gemeinschaft zu bauen, wobei der Körper selbst als Material und Instrument dient.</p>
+            <p>Die erste Erkundung dieser Linie ist <strong>2: Die Latente Ebene</strong>, ausgezeichnet bei Concéntrico 12 (2026): eine Bürgerchoreografie, in der alltägliches Gehen zu kollektiver Identität wird und der Körper zum absoluten Maß und Prüfstein der Stadt wird.</p>
+            <p>Dutzende Teilnehmende — die „Träger" — gingen, fielen und erhoben sich gemeinsam entlang des Paseo del Espolón in Logroño und verwandelten eine gewöhnliche Promenade in eine gemeinsam getragene architektonische Partitur.</p>
+            <a href="https://concentrico.es/el-plano-latente/" target="_blank" class="link-cta">Projekt bei Concéntrico ansehen</a>
+        </div>
+        <div class="description-content i18n hidden" data-lang="zh">
+            <p>这一第二研究领域转向公共空间——社会、相互接触的身体、社群。这里的操作是以身体本身作为材料与工具，建构社群的建筑。</p>
+            <p>这一方向的首个探索是 <strong>2: 潜在之面</strong>，荣获 Concéntrico 12（2026）奖项：一场市民编舞，日常的行走转化为集体身份，身体成为城市绝对的尺度与验证者。</p>
+            <p>数十名参与者——“搬运者”——在洛格罗尼奥的埃斯波隆大道上一同行走、倒下又起身，把一条寻常的步道变成一份共享的建筑乐谱。</p>
+            <a href="https://concentrico.es/el-plano-latente/" target="_blank" class="link-cta">在 Concéntrico 查看项目</a>
+        </div>
+        <div class="description-content i18n hidden" data-lang="jp">
+            <p>この第二の研究領域は公共空間へと向かう——社会、接触し合う身体、共同体。ここでの操作は、身体そのものを素材かつ道具として、共同体の建築を築くことである。</p>
+            <p>この系統の最初の探求は <strong>2: 潜在する図面</strong>、Concéntrico 12（2026年）で受賞した作品であり、日常の歩行が集団的アイデンティティへと変容する市民的振付であり、身体が都市の絶対的な尺度であり検証者となる。</p>
+            <p>「ポルタドーレス（運び手）」と呼ばれる数十人の参加者が、ログローニョのパセオ・デル・エスポロンを共に歩き、倒れ、また立ち上がり、ありふれた遊歩道を共有の建築的譜面へと変えた。</p>
+            <a href="https://concentrico.es/el-plano-latente/" target="_blank" class="link-cta">Concéntrico でプロジェクトを見る</a>
+        </div>
+
+        <section class="archive-grid">
+            <div class="plate"><div class="plate-img"><img src="2_plano-latente__2_.JPG" alt="2: El Plano Latente — still 02"></div><p class="plate-label i18n" data-lang="en">Plate 01 / Falling together</p><p class="plate-label i18n hidden" data-lang="es">Lámina 01 / Caer juntos</p><p class="plate-label i18n hidden" data-lang="ca">Làmina 01 / Caure junts</p><p class="plate-label i18n hidden" data-lang="fr">Planche 01 / Tomber ensemble</p><p class="plate-label i18n hidden" data-lang="de">Tafel 01 / Gemeinsam fallen</p><p class="plate-label i18n hidden" data-lang="zh">图版 01 / 共同倒下</p><p class="plate-label i18n hidden" data-lang="jp">図版 01 / 共に倒れる</p></div>
+            <div class="plate"><div class="plate-img"><img src="2_plano-latente__3_.JPG" alt="2: El Plano Latente — still 03"></div><p class="plate-label i18n" data-lang="en">Plate 02 / Single gesture</p><p class="plate-label i18n hidden" data-lang="es">Lámina 02 / Un solo gesto</p><p class="plate-label i18n hidden" data-lang="ca">Làmina 02 / Un sol gest</p><p class="plate-label i18n hidden" data-lang="fr">Planche 02 / Un seul geste</p><p class="plate-label i18n hidden" data-lang="de">Tafel 02 / Eine Geste</p><p class="plate-label i18n hidden" data-lang="zh">图版 02 / 一个手势</p><p class="plate-label i18n hidden" data-lang="jp">図版 02 / 一つの身振り</p></div>
+            <div class="plate"><div class="plate-img"><img src="2_plano-latente__4_.JPG" alt="2: El Plano Latente — still 04"></div><p class="plate-label i18n" data-lang="en">Plate 03 / The formation</p><p class="plate-label i18n hidden" data-lang="es">Lámina 03 / La formación</p><p class="plate-label i18n hidden" data-lang="ca">Làmina 03 / La formació</p><p class="plate-label i18n hidden" data-lang="fr">Planche 03 / La formation</p><p class="plate-label i18n hidden" data-lang="de">Tafel 03 / Die Formation</p><p class="plate-label i18n hidden" data-lang="zh">图版 03 / 队形</p><p class="plate-label i18n hidden" data-lang="jp">図版 03 / 隊形</p></div>
+            <div class="plate"><div class="plate-img"><img src="2_plano-latente__5_.JPG" alt="2: El Plano Latente — still 05"></div><p class="plate-label i18n" data-lang="en">Plate 04 / Held hands</p><p class="plate-label i18n hidden" data-lang="es">Lámina 04 / Manos unidas</p><p class="plate-label i18n hidden" data-lang="ca">Làmina 04 / Mans unides</p><p class="plate-label i18n hidden" data-lang="fr">Planche 04 / Mains liées</p><p class="plate-label i18n hidden" data-lang="de">Tafel 04 / Gehaltene Hände</p><p class="plate-label i18n hidden" data-lang="zh">图版 04 / 相牵的手</p><p class="plate-label i18n hidden" data-lang="jp">図版 04 / つないだ手</p></div>
+            <div class="plate"><div class="plate-img"><img src="2_plano-latente__6_.JPG" alt="2: El Plano Latente — still 06"></div><p class="plate-label i18n" data-lang="en">Plate 05 / Rising up</p><p class="plate-label i18n hidden" data-lang="es">Lámina 05 / Levantarse</p><p class="plate-label i18n hidden" data-lang="ca">Làmina 05 / Aixecar-se</p><p class="plate-label i18n hidden" data-lang="fr">Planche 05 / Se relever</p><p class="plate-label i18n hidden" data-lang="de">Tafel 05 / Sich erheben</p><p class="plate-label i18n hidden" data-lang="zh">图版 05 / 起身</p><p class="plate-label i18n hidden" data-lang="jp">図版 05 / 立ち上がる</p></div>
+        </section>
+
+        <footer>
+            <div class="footer-col"><h4>Status</h4><p>Awarded — Concéntrico 12<br>Logroño, ES / 2026</p></div>
+            <div class="footer-col"><h4>Network</h4><a href="https://www.m-i-r-a.com/" target="_blank">m-i-r-a arquitectura</a><br><a href="https://www.poeticabeligerante.org/" target="_blank">Poética Beligerante</a><br><a href="https://www.wondergroundcompany.com/" target="_blank">Wonderground</a></div>
+            <div class="footer-col"><h4>Visuals</h4><a href="https://www.instagram.com/igni_cligbcn/?hl=en" target="_blank">Ignasi Castañé</a></div>
+            <div class="footer-col"><h4>Inquiry</h4><a href="mailto:marc.zaragoza@m-i-r-a.com">marc.zaragoza@m-i-r-a.com</a></div>
+        </footer>
+    </div>
+
+    <script src="common.js"></script>
+</body>
+</html>

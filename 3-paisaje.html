@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3: Landscape — Dancing on Architecture</title>
+    <meta name="description" content="3: Landscape — a research field on human action facing the immensity of the landscape, currently in development.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="award-popup">
+        <div class="popup-inner">
+            <button class="close-btn" onclick="closePopup()">[ Close / Enter Site ]</button>
+            <div class="award-info">
+                <div class="award-badge">Concéntrico 12</div>
+                <div class="award-badge" style="background: transparent; border: 1px solid black; margin-left: 10px;">Cat: Identidad y ficción</div>
+                <h1 class="we-won-title">WE<br>WON</h1>
+            </div>
+            <div class="popup-video-container">
+                <video autoplay muted loop playsinline>
+                    <source src="Animacion_Latente_Fisica.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="popup-text-content">
+                <h2>El Plano Latente</h2>
+                <p>Gracias Concéntrico por premiar nuestra propuesta para el Paseo del Espolón: una <strong>ficción urbana</strong> donde el caminar cotidiano se transforma en identidad colectiva.</p>
+                <p>Un sistema que reivindica el cuerpo como medida, validador y referencia absoluta de la arquitectura.</p>
+                <div class="doc-links">
+                    <a href="El_plano_latente_01.pdf" target="_blank">Download Panel 01 / Score</a>
+                    <a href="El_plano_latente_02.pdf" target="_blank">Download Panel 02 / Process</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid">
+        <header>
+            <h1>Dancing on Architecture</h1>
+            <nav class="lang-switch">
+                <a href="index.html" class="nav-link" title="Home">0:</a>
+                <a href="1-estructura.html" class="nav-link" title="1: Structure">1:</a>
+                <a href="2-plano-latente.html" class="nav-link" title="2: El Plano Latente">2:</a>
+                <a href="3-paisaje.html" class="nav-link active" title="3: Landscape">3:</a>
+                <span onclick="openPopup()" class="trigger-popup" title="View Award">§</span>
+                <span class="nav-divider">|</span>
+                <span onclick="setLang('en', event)" data-setlang="en" class="lang-option active">EN</span>
+                <span onclick="setLang('es', event)" data-setlang="es" class="lang-option">ES</span>
+                <span onclick="setLang('ca', event)" data-setlang="ca" class="lang-option">CA</span>
+                <span onclick="setLang('fr', event)" data-setlang="fr" class="lang-option">FR</span>
+                <span onclick="setLang('de', event)" data-setlang="de" class="lang-option">DE</span>
+                <span onclick="setLang('zh', event)" data-setlang="zh" class="lang-option">ZH</span>
+                <span onclick="setLang('jp', event)" data-setlang="jp" class="lang-option">JP</span>
+            </nav>
+        </header>
+
+        <section class="hero-image">
+            <img src="garraf__1_.jpg" alt="3: Landscape — Garraf quarry">
+        </section>
+
+        <!-- MANIFESTO -->
+        <div class="manifesto-text i18n" data-lang="en">Before the quarry, before the horizon, the body is no longer measure — it is witness.</div>
+        <div class="manifesto-text i18n hidden" data-lang="es">Ante la cantera, ante el horizonte, el cuerpo ya no es medida: es testigo.</div>
+        <div class="manifesto-text i18n hidden" data-lang="ca">Davant la pedrera, davant l'horitzó, el cos ja no és mesura: és testimoni.</div>
+        <div class="manifesto-text i18n hidden" data-lang="fr">Face à la carrière, face à l'horizon, le corps n'est plus mesure : il est témoin.</div>
+        <div class="manifesto-text i18n hidden" data-lang="de">Vor dem Steinbruch, vor dem Horizont, ist der Körper kein Maß mehr — er ist Zeuge.</div>
+        <div class="manifesto-text i18n hidden" data-lang="zh">面对采石场，面对地平线，身体不再是尺度——它是见证者。</div>
+        <div class="manifesto-text i18n hidden" data-lang="jp">採石場を前に、地平線を前に、身体はもはや尺度ではない——それは証人である。</div>
+
+        <!-- DESCRIPTION -->
+        <div class="description-content i18n" data-lang="en">
+            <p>This third field turns toward landscape and infinity — bodies confronted with the unknown, with a nature that exceeds all domestic and urban scale.</p>
+            <p>We are currently preparing a first exploration of human action that overtakes the scale of the body within the landscape: quarries, extraction fronts and terrain reshaped by machinery become the site where the body measures itself against forces far larger than its own.</p>
+            <p>This research is in development. No piece has been performed yet — what follows is a first cartography of the territory: the Garraf quarry, its scars, its scale, its silence.</p>
+        </div>
+        <div class="description-content i18n hidden" data-lang="es">
+            <p>Este tercer campo se dirige al paisaje y la infinitud: cuerpos ante lo ignoto, ante una naturaleza que sobrepasa toda escala doméstica y urbana.</p>
+            <p>Actualmente preparamos una primera pieza de exploración de la acción humana que sobrepasa la escala del cuerpo en el paisaje: canteras, frentes de extracción y terrenos remodelados por la maquinaria se convierten en el lugar donde el cuerpo se mide frente a fuerzas mucho mayores que la propia.</p>
+            <p>Esta investigación está en desarrollo. Todavía no se ha representado ninguna pieza: lo que sigue es una primera cartografía del territorio: la cantera del Garraf, sus cicatrices, su escala, su silencio.</p>
+        </div>
+        <div class="description-content i18n hidden" data-lang="ca">
+            <p>Aquest tercer camp es dirigeix al paisatge i la infinitud: cossos davant l'ignot, davant una natura que sobrepassa tota escala domèstica i urbana.</p>
+            <p>Actualment preparem una primera peça d'exploració de l'acció humana que sobrepassa l'escala del cos en el paisatge: pedreres, fronts d'extracció i terrenys remodelats per la maquinària esdevenen el lloc on el cos es mesura davant forces molt més grans que la pròpia.</p>
+            <p>Aquesta recerca està en desenvolupament. Encara no s'ha representat cap peça: el que segueix és una primera cartografia del territori: la pedrera del Garraf, les seves cicatrius, la seva escala, el seu silenci.</p>
+        </div>
+        <div class="description-content i18n hidden" data-lang="fr">
+            <p>Ce troisième champ se tourne vers le paysage et l'infini : des corps confrontés à l'inconnu, à une nature qui dépasse toute échelle domestique et urbaine.</p>
+            <p>Nous préparons actuellement une première pièce explorant l'action humaine qui dépasse l'échelle du corps dans le paysage : carrières, fronts d'extraction et terrains remodelés par la machinerie deviennent le lieu où le corps se mesure face à des forces bien plus grandes que lui.</p>
+            <p>Cette recherche est en cours de développement. Aucune pièce n'a encore été jouée : ce qui suit est une première cartographie du territoire : la carrière du Garraf, ses cicatrices, son échelle, son silence.</p>
+        </div>
+        <div class="description-content i18n hidden" data-lang="de">
+            <p>Dieses dritte Feld wendet sich der Landschaft und der Unendlichkeit zu: Körper im Angesicht des Unbekannten, einer Natur, die jeden häuslichen und städtischen Maßstab übersteigt.</p>
+            <p>Wir bereiten derzeit eine erste Erkundung menschlichen Handelns vor, das den Maßstab des Körpers in der Landschaft überschreitet: Steinbrüche, Abbaufronten und von Maschinen umgeformtes Gelände werden zu dem Ort, an dem sich der Körper an Kräften misst, die weit größer sind als er selbst.</p>
+            <p>Diese Forschung befindet sich in der Entwicklung. Noch wurde kein Stück aufgeführt — was folgt, ist eine erste Kartografie des Territoriums: der Steinbruch von Garraf, seine Narben, sein Maßstab, seine Stille.</p>
+        </div>
+        <div class="description-content i18n hidden" data-lang="zh">
+            <p>这一第三研究领域转向风景与无限——身体面对未知，面对一种超越所有家庭与城市尺度的自然。</p>
+            <p>我们目前正在筹备一部探索性作品，探讨超越身体尺度的人类行为在风景中的展开：采石场、开采面以及被机械重塑的地形，成为身体在远大于自身的力量面前进行衡量的场所。</p>
+            <p>这项研究仍在开发中，尚未有作品上演——以下是这片地域的初步测绘：加拉夫采石场，它的伤痕、它的尺度、它的寂静。</p>
+        </div>
+        <div class="description-content i18n hidden" data-lang="jp">
+            <p>この第三の研究領域は風景と無限へと向かう——未知に、そしてあらゆる家庭的・都市的スケールを超える自然に直面する身体。</p>
+            <p>私たちは現在、風景の中で身体のスケールを超える人間の行為を探る最初の作品を準備している：採石場、採掘の切羽、機械によって作り替えられた地形が、自らをはるかに超える力と向き合い身体を測る場となる。</p>
+            <p>この研究はまだ開発途中である。作品はまだ上演されていない——以下は、この土地の最初の地図作成である：ガラフの採石場、その傷跡、そのスケール、その静寂。</p>
+        </div>
+
+        <div class="meta-row">
+            <div class="meta-item i18n" data-lang="en"><span>Status</span>In development</div>
+            <div class="meta-item i18n hidden" data-lang="es"><span>Estado</span>En desarrollo</div>
+            <div class="meta-item i18n hidden" data-lang="ca"><span>Estat</span>En desenvolupament</div>
+            <div class="meta-item i18n hidden" data-lang="fr"><span>Statut</span>En développement</div>
+            <div class="meta-item i18n hidden" data-lang="de"><span>Status</span>In Entwicklung</div>
+            <div class="meta-item i18n hidden" data-lang="zh"><span>状态</span>研发中</div>
+            <div class="meta-item i18n hidden" data-lang="jp"><span>状況</span>開発中</div>
+        </div>
+
+        <section class="archive-grid">
+            <div class="plate"><div class="plate-img"><img src="garraf__2_.jpg" alt="Garraf quarry — still 02"></div><p class="plate-label i18n" data-lang="en">Plate 01 / Extraction front</p><p class="plate-label i18n hidden" data-lang="es">Lámina 01 / Frente de extracción</p><p class="plate-label i18n hidden" data-lang="ca">Làmina 01 / Front d'extracció</p><p class="plate-label i18n hidden" data-lang="fr">Planche 01 / Front d'extraction</p><p class="plate-label i18n hidden" data-lang="de">Tafel 01 / Abbaufront</p><p class="plate-label i18n hidden" data-lang="zh">图版 01 / 开采面</p><p class="plate-label i18n hidden" data-lang="jp">図版 01 / 採掘の切羽</p></div>
+            <div class="plate"><div class="plate-img"><img src="garraf__3_.jpg" alt="Garraf quarry — still 03"></div><p class="plate-label i18n" data-lang="en">Plate 02 / Scale of the void</p><p class="plate-label i18n hidden" data-lang="es">Lámina 02 / Escala del vacío</p><p class="plate-label i18n hidden" data-lang="ca">Làmina 02 / Escala del buit</p><p class="plate-label i18n hidden" data-lang="fr">Planche 02 / Échelle du vide</p><p class="plate-label i18n hidden" data-lang="de">Tafel 02 / Maßstab der Leere</p><p class="plate-label i18n hidden" data-lang="zh">图版 02 / 虚空的尺度</p><p class="plate-label i18n hidden" data-lang="jp">図版 02 / 空虚のスケール</p></div>
+            <div class="plate"><div class="plate-img"><img src="garraf__4_.jpg" alt="Garraf quarry — still 04"></div><p class="plate-label i18n" data-lang="en">Plate 03 / The horizon line</p><p class="plate-label i18n hidden" data-lang="es">Lámina 03 / La línea del horizonte</p><p class="plate-label i18n hidden" data-lang="ca">Làmina 03 / La línia de l'horitzó</p><p class="plate-label i18n hidden" data-lang="fr">Planche 03 / La ligne d'horizon</p><p class="plate-label i18n hidden" data-lang="de">Tafel 03 / Die Horizontlinie</p><p class="plate-label i18n hidden" data-lang="zh">图版 03 / 地平线</p><p class="plate-label i18n hidden" data-lang="jp">図版 03 / 地平線</p></div>
+        </section>
+
+        <footer>
+            <div class="footer-col"><h4>Status</h4><p>In Development<br>Garraf, ES / 2026</p></div>
+            <div class="footer-col"><h4>Network</h4><a href="https://www.m-i-r-a.com/" target="_blank">m-i-r-a arquitectura</a><br><a href="https://www.poeticabeligerante.org/" target="_blank">Poética Beligerante</a><br><a href="https://www.wondergroundcompany.com/" target="_blank">Wonderground</a></div>
+            <div class="footer-col"><h4>Visuals</h4><a href="https://www.instagram.com/igni_cligbcn/?hl=en" target="_blank">Ignasi Castañé</a></div>
+            <div class="footer-col"><h4>Inquiry</h4><a href="mailto:marc.zaragoza@m-i-r-a.com">marc.zaragoza@m-i-r-a.com</a></div>
+        </footer>
+    </div>
+
+    <script src="common.js"></script>
+</body>
+</html>

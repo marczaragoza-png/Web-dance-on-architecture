@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1: Structure — Dancing on Architecture</title>
+    <meta name="description" content="1: Structure — a performative videodance piece measuring the intimate, domestic scale of a space under construction.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="award-popup">
+        <div class="popup-inner">
+            <button class="close-btn" onclick="closePopup()">[ Close / Enter Site ]</button>
+            <div class="award-info">
+                <div class="award-badge">Concéntrico 12</div>
+                <div class="award-badge" style="background: transparent; border: 1px solid black; margin-left: 10px;">Cat: Identidad y ficción</div>
+                <h1 class="we-won-title">WE<br>WON</h1>
+            </div>
+            <div class="popup-video-container">
+                <video autoplay muted loop playsinline>
+                    <source src="1_structure__1_.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="popup-text-content">
+                <h2>El Plano Latente</h2>
+                <p>Gracias Concéntrico por premiar nuestra propuesta para el Paseo del Espolón: una <strong>ficción urbana</strong> donde el caminar cotidiano se transforma en identidad colectiva.</p>
+                <p>Un sistema que reivindica el cuerpo como medida, validador y referencia absoluta de la arquitectura.</p>
+                <div class="doc-links">
+                    <a href="El_plano_latente_01.pdf" target="_blank">Download Panel 01 / Score</a>
+                    <a href="El_plano_latente_02.pdf" target="_blank">Download Panel 02 / Process</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid">
+        <header>
+            <h1>Dancing on Architecture</h1>
+            <nav class="lang-switch">
+                <a href="index.html" class="nav-link" title="Home">0:</a>
+                <a href="1-estructura.html" class="nav-link active" title="1: Structure">1:</a>
+                <a href="2-plano-latente.html" class="nav-link" title="2: El Plano Latente">2:</a>
+                <a href="3-paisaje.html" class="nav-link" title="3: Landscape">3:</a>
+                <span onclick="openPopup()" class="trigger-popup" title="View Award">§</span>
+                <span class="nav-divider">|</span>
+                <span onclick="setLang('en', event)" data-setlang="en" class="lang-option active">EN</span>
+                <span onclick="setLang('es', event)" data-setlang="es" class="lang-option">ES</span>
+                <span onclick="setLang('ca', event)" data-setlang="ca" class="lang-option">CA</span>
+                <span onclick="setLang('fr', event)" data-setlang="fr" class="lang-option">FR</span>
+                <span onclick="setLang('de', event)" data-setlang="de" class="lang-option">DE</span>
+                <span onclick="setLang('zh', event)" data-setlang="zh" class="lang-option">ZH</span>
+                <span onclick="setLang('jp', event)" data-setlang="jp" class="lang-option">JP</span>
+            </nav>
+        </header>
+
+        <section class="hero-video">
+            <video autoplay muted loop playsinline>
+                <source src="circle.mp4" type="video/mp4">
+            </video>
+        </section>
+
+        <!-- MANIFESTO -->
+        <div class="manifesto-text i18n" data-lang="en">The body is the smallest unit of architecture — the measure by which an intimacy no wall alone can build.</div>
+        <div class="manifesto-text i18n hidden" data-lang="es">El cuerpo es la unidad más pequeña de la arquitectura: la medida con la que se construye una intimidad que ningún muro logra por sí solo.</div>
+        <div class="manifesto-text i18n hidden" data-lang="ca">El cos és la unitat més petita de l'arquitectura: la mesura amb què es construeix una intimitat que cap mur no aconsegueix per si sol.</div>
+        <div class="manifesto-text i18n hidden" data-lang="fr">Le corps est la plus petite unité de l'architecture : la mesure par laquelle se construit une intimité qu'aucun mur ne peut bâtir seul.</div>
+        <div class="manifesto-text i18n hidden" data-lang="de">Der Körper ist die kleinste Einheit der Architektur — das Maß, mit dem eine Intimität entsteht, die keine Mauer allein herstellen kann.</div>
+        <div class="manifesto-text i18n hidden" data-lang="zh">身体是建筑最小的单位——一种衡量尺度，唯有它才能建构起任何一堵墙都无法单独造就的亲密。</div>
+        <div class="manifesto-text i18n hidden" data-lang="jp">身体は建築の最小単位である——壁だけでは決して築けない親密さを生み出す尺度である。</div>
+
+        <!-- DESCRIPTION -->
+        <div class="description-content i18n" data-lang="en">
+            <p>This first field of research works at close, domestic range — the human scale of direct contact. Here architecture and dance share the same material: skin, weight, threshold, and grip.</p>
+            <p>The first exploration in this line is <strong>1: Structure</strong>, a performative videodance piece that builds and measures the structure of a space still under construction, using the body as scaffolding, plumb line, and load.</p>
+            <p>Filmed inside an unfinished house, two bodies hang, balance and count the bays of a concrete frame before it becomes a home — turning the construction site itself into a temporary choreographic score.</p>
+            <a href="https://vimeo.com/1169669148" target="_blank" class="link-cta">Watch 1: Structure on Vimeo</a>
+        </div>
+        <div class="description-content i18n hidden" data-lang="es">
+            <p>Este primer campo de investigación trabaja a corta distancia, en el rango doméstico: la escala humana del contacto directo. Aquí arquitectura y danza comparten el mismo material: piel, peso, umbral y agarre.</p>
+            <p>La primera exploración de esta línea es <strong>1: Estructura</strong>, una pieza de videodanza performativa que construye y mide la estructura de un espacio todavía en obras, usando el cuerpo como andamio, plomada y carga.</p>
+            <p>Rodada en el interior de una vivienda sin terminar, dos cuerpos cuelgan, se equilibran y cuentan los vanos de una estructura de hormigón antes de que se convierta en hogar, transformando la propia obra en una partitura coreográfica temporal.</p>
+            <a href="https://vimeo.com/1169669148" target="_blank" class="link-cta">Ver 1: Estructura en Vimeo</a>
+        </div>
+        <div class="description-content i18n hidden" data-lang="ca">
+            <p>Aquest primer camp de recerca treballa a curta distància, en el rang domèstic: l'escala humana del contacte directe. Aquí arquitectura i dansa comparteixen el mateix material: pell, pes, llindar i agafada.</p>
+            <p>La primera exploració d'aquesta línia és <strong>1: Estructura</strong>, una peça de videodansa performativa que construeix i mesura l'estructura d'un espai encara en obres, usant el cos com a bastida, plomada i càrrega.</p>
+            <p>Rodada a l'interior d'un habitatge sense acabar, dos cossos pengen, s'equilibren i compten els trams d'una estructura de formigó abans que esdevingui llar, transformant la mateixa obra en una partitura coreogràfica temporal.</p>
+            <a href="https://vimeo.com/1169669148" target="_blank" class="link-cta">Mira 1: Estructura a Vimeo</a>
+        </div>
+        <div class="description-content i18n hidden" data-lang="fr">
+            <p>Ce premier champ de recherche opère à courte distance, à l'échelle domestique : l'échelle humaine du contact direct. Architecture et danse y partagent la même matière : peau, poids, seuil et prise.</p>
+            <p>La première exploration de cette ligne est <strong>1: Structure</strong>, une pièce de vidéodanse performative qui construit et mesure la structure d'un espace encore en chantier, utilisant le corps comme échafaudage, fil à plomb et charge.</p>
+            <p>Tournée à l'intérieur d'une maison inachevée, deux corps se suspendent, s'équilibrent et comptent les travées d'une ossature en béton avant qu'elle ne devienne un foyer, transformant le chantier lui-même en partition chorégraphique temporaire.</p>
+            <a href="https://vimeo.com/1169669148" target="_blank" class="link-cta">Voir 1: Structure sur Vimeo</a>
+        </div>
+        <div class="description-content i18n hidden" data-lang="de">
+            <p>Dieses erste Forschungsfeld arbeitet auf kurze Distanz, im häuslichen Maßstab: dem menschlichen Maß des direkten Kontakts. Hier teilen Architektur und Tanz dasselbe Material: Haut, Gewicht, Schwelle und Griff.</p>
+            <p>Die erste Erkundung dieser Linie ist <strong>1: Struktur</strong>, ein performatives Videotanzstück, das die Struktur eines noch im Bau befindlichen Raums aufbaut und vermisst — der Körper als Gerüst, Lot und Last.</p>
+            <p>Gedreht im Inneren eines unfertigen Hauses, hängen, balancieren und zählen zwei Körper die Felder eines Betonrahmens, bevor er zum Zuhause wird — die Baustelle selbst wird zur temporären choreografischen Partitur.</p>
+            <a href="https://vimeo.com/1169669148" target="_blank" class="link-cta">1: Struktur auf Vimeo ansehen</a>
+        </div>
+        <div class="description-content i18n hidden" data-lang="zh">
+            <p>这一首个研究领域在近距离、家庭尺度上展开——直接接触的人体尺度。在这里，建筑与舞蹈共享同一种材料：皮肤、重量、门槛与抓握。</p>
+            <p>这一方向的首个探索是 <strong>1: 结构</strong>，一部表演性的影像舞蹈作品，利用身体作为脚手架、铅垂线与荷载，构建并测量一处仍在施工中的空间结构。</p>
+            <p>影片拍摄于一座未完工的住宅内部，两具身体悬挂、平衡，数着混凝土框架的开间，在它成为家之前，把工地本身变成了一份临时的编舞乐谱。</p>
+            <a href="https://vimeo.com/1169669148" target="_blank" class="link-cta">在 Vimeo 观看 1: 结构</a>
+        </div>
+        <div class="description-content i18n hidden" data-lang="jp">
+            <p>この最初の研究領域は、近距離・家庭的な範囲——直接的な接触という人体スケールで展開される。ここでは建築とダンスが同じ素材を共有する：皮膚、重さ、閾、そして握り。</p>
+            <p>この系統における最初の探求が <strong>1: 構造</strong> であり、身体を足場・下げ振り・荷重として用いながら、まだ建設中の空間の構造を築き、測るパフォーマティブなスクリーンダンス作品である。</p>
+            <p>未完成の住宅内部で撮影され、二つの身体がコンクリート架構の間口をぶら下がり、バランスを取りながら数える——それが家となる前に、建設現場そのものを一時的な振付の譜面へと変える。</p>
+            <a href="https://vimeo.com/1169669148" target="_blank" class="link-cta">Vimeo で 1: 構造 を見る</a>
+        </div>
+
+        <section class="archive-grid">
+            <div class="plate"><div class="plate-img"><img src="1_structure__1_.jpg" alt="1: Structure — still 01"></div><p class="plate-label i18n" data-lang="en">Plate 01 / The moon-cut wall</p><p class="plate-label i18n hidden" data-lang="es">Lámina 01 / El muro con la luna</p><p class="plate-label i18n hidden" data-lang="ca">Làmina 01 / El mur amb la lluna</p><p class="plate-label i18n hidden" data-lang="fr">Planche 01 / Le mur à la lune</p><p class="plate-label i18n hidden" data-lang="de">Tafel 01 / Die Mondwand</p><p class="plate-label i18n hidden" data-lang="zh">图版 01 / 月形墙</p><p class="plate-label i18n hidden" data-lang="jp">図版 01 / 月の壁</p></div>
+            <div class="plate"><div class="plate-img"><img src="1_structure__2_.jpg" alt="1: Structure — still 02"></div><p class="plate-label i18n" data-lang="en">Plate 02 / Suspension</p><p class="plate-label i18n hidden" data-lang="es">Lámina 02 / Suspensión</p><p class="plate-label i18n hidden" data-lang="ca">Làmina 02 / Suspensió</p><p class="plate-label i18n hidden" data-lang="fr">Planche 02 / Suspension</p><p class="plate-label i18n hidden" data-lang="de">Tafel 02 / Schwebe</p><p class="plate-label i18n hidden" data-lang="zh">图版 02 / 悬空</p><p class="plate-label i18n hidden" data-lang="jp">図版 02 / 宙吊り</p></div>
+            <div class="plate"><div class="plate-img"><img src="1_structure__3_.jpg" alt="1: Structure — still 03"></div><p class="plate-label i18n" data-lang="en">Plate 03 / Inverted weight</p><p class="plate-label i18n hidden" data-lang="es">Lámina 03 / Peso invertido</p><p class="plate-label i18n hidden" data-lang="ca">Làmina 03 / Pes invertit</p><p class="plate-label i18n hidden" data-lang="fr">Planche 03 / Poids inversé</p><p class="plate-label i18n hidden" data-lang="de">Tafel 03 / Umgekehrtes Gewicht</p><p class="plate-label i18n hidden" data-lang="zh">图版 03 / 倒置的重量</p><p class="plate-label i18n hidden" data-lang="jp">図版 03 / 反転する重み</p></div>
+            <div class="plate"><div class="plate-img"><img src="1_structure__4_.jpg" alt="1: Structure — still 04"></div><p class="plate-label i18n" data-lang="en">Plate 04 / Resting on the ledge</p><p class="plate-label i18n hidden" data-lang="es">Lámina 04 / Reposo en el borde</p><p class="plate-label i18n hidden" data-lang="ca">Làmina 04 / Repòs a la vora</p><p class="plate-label i18n hidden" data-lang="fr">Planche 04 / Repos sur la corniche</p><p class="plate-label i18n hidden" data-lang="de">Tafel 04 / Ruhe auf der Kante</p><p class="plate-label i18n hidden" data-lang="zh">图版 04 / 檐边的静止</p><p class="plate-label i18n hidden" data-lang="jp">図版 04 / 縁での静止</p></div>
+        </section>
+
+        <footer>
+            <div class="footer-col"><h4>Status</h4><p>Ongoing Research<br>Barcelona, ES / 2026</p></div>
+            <div class="footer-col"><h4>Network</h4><a href="https://www.m-i-r-a.com/" target="_blank">m-i-r-a arquitectura</a><br><a href="https://www.poeticabeligerante.org/" target="_blank">Poética Beligerante</a><br><a href="https://www.wondergroundcompany.com/" target="_blank">Wonderground</a></div>
+            <div class="footer-col"><h4>Visuals</h4><a href="https://www.instagram.com/igni_cligbcn/?hl=en" target="_blank">Ignasi Castañé</a></div>
+            <div class="footer-col"><h4>Inquiry</h4><a href="mailto:marc.zaragoza@m-i-r-a.com">marc.zaragoza@m-i-r-a.com</a></div>
+        </footer>
+    </div>
+
+    <script src="common.js"></script>
+</body>
+</html>
