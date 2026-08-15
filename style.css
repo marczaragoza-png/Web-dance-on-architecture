@@ -23,7 +23,8 @@ body {
 }
 
 /* --- POP-UP (award) --- */
-#award-popup {
+#award-popup,
+#pool-popup {
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
