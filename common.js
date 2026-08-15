@@ -12,6 +12,20 @@ function openPopup() {
     setTimeout(() => { popup.style.opacity = '1'; }, 10);
 }
 
+function closePoolPopup() {
+    const popup = document.getElementById('pool-popup');
+    if (!popup) return;
+    popup.style.opacity = '0';
+    setTimeout(() => { popup.style.display = 'none'; }, 500);
+}
+
+function openPoolPopup() {
+    const popup = document.getElementById('pool-popup');
+    if (!popup) return;
+    popup.style.display = 'block';
+    setTimeout(() => { popup.style.opacity = '1'; }, 10);
+}
+
 function setLang(lang, evt) {
     document.querySelectorAll('.i18n').forEach(el => {
         el.classList.toggle('hidden', el.getAttribute('data-lang') !== lang);
@@ -31,5 +45,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const trigger = document.querySelector('.lang-switch span.lang-option[data-setlang="' + saved + '"]');
     if (trigger) {
         setLang(saved, { target: trigger });
+    }
+
+    // POOL popup opens every time the site is entered (index only).
+    // Concéntrico popup stays manual-only (opens only via its § trigger).
+    if (document.getElementById('pool-popup')) {
+        openPoolPopup();
     }
 });
