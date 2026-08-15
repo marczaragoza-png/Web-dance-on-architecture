@@ -1,14 +1,29 @@
+function lockScroll() {
+    document.body.style.overflow = 'hidden';
+}
+
+function unlockScrollIfNoneOpen() {
+    const award = document.getElementById('award-popup');
+    const pool = document.getElementById('pool-popup');
+    const awardOpen = award && getComputedStyle(award).display !== 'none';
+    const poolOpen = pool && getComputedStyle(pool).display !== 'none';
+    if (!awardOpen && !poolOpen) {
+        document.body.style.overflow = '';
+    }
+}
+
 function closePopup() {
     const popup = document.getElementById('award-popup');
     if (!popup) return;
     popup.style.opacity = '0';
-    setTimeout(() => { popup.style.display = 'none'; }, 500);
+    setTimeout(() => { popup.style.display = 'none'; unlockScrollIfNoneOpen(); }, 500);
 }
 
 function openPopup() {
     const popup = document.getElementById('award-popup');
     if (!popup) return;
     popup.style.display = 'block';
+    lockScroll();
     setTimeout(() => { popup.style.opacity = '1'; }, 10);
 }
 
@@ -16,13 +31,14 @@ function closePoolPopup() {
     const popup = document.getElementById('pool-popup');
     if (!popup) return;
     popup.style.opacity = '0';
-    setTimeout(() => { popup.style.display = 'none'; }, 500);
+    setTimeout(() => { popup.style.display = 'none'; unlockScrollIfNoneOpen(); }, 500);
 }
 
 function openPoolPopup() {
     const popup = document.getElementById('pool-popup');
     if (!popup) return;
     popup.style.display = 'block';
+    lockScroll();
     setTimeout(() => { popup.style.opacity = '1'; }, 10);
 }
 
