@@ -277,7 +277,9 @@ footer {
 
 @media (max-width: 900px) {
     .grid { display: block; }
-    .popup-inner { display: flex; flex-direction: column; padding: 20px; }
+    .popup-inner { display: flex; flex-direction: column; padding: 64px 20px 20px; }
+    .close-btn { top: 20px; right: 20px; }
+    .award-info { margin-bottom: 24px; }
     .we-won-title { font-size: 80px; margin-bottom: 20px; }
     .popup-video-container { grid-column: 1 / -1; width: 100%; margin-bottom: 20px; }
     .popup-text-content { grid-column: 1 / -1; }
