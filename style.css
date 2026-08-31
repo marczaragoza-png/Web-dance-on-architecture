@@ -84,8 +84,19 @@ body {
     margin: 0;
 }
 
-.popup-video-container { grid-column: 1 / span 8; margin-bottom: 40px; }
+.popup-video-container { grid-column: 1 / span 8; margin-bottom: 40px; position: relative; }
 .popup-video-container video { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.popup-laurels {
+    position: absolute;
+    top: 20px; left: 20px; right: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    z-index: 5;
+    pointer-events: none;
+}
+.popup-laurels img { height: 90px; width: auto; display: block; }
 
 .popup-text-content {
     grid-column: 9 / span 4;
@@ -283,6 +294,8 @@ footer {
     .we-won-title { font-size: 80px; margin-bottom: 20px; }
     .popup-video-container { grid-column: 1 / -1; width: 100%; margin-bottom: 20px; }
     .popup-video-container video { height: auto; object-fit: initial; }
+    .popup-laurels { top: 12px; left: 12px; right: 12px; }
+    .popup-laurels img { height: 50px; }
     .popup-text-content { grid-column: 1 / -1; }
 
     .description-content { width: 100%; }
