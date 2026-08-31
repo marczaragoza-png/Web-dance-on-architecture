@@ -84,7 +84,7 @@ body {
     margin: 0;
 }
 
-.popup-video-container { grid-column: 1 / span 8; margin-bottom: 40px; position: relative; }
+.popup-video-container { grid-column: 1 / span 8; margin-bottom: 40px; position: relative; overflow: hidden; }
 .popup-video-container video { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 .popup-laurels {
@@ -97,6 +97,9 @@ body {
     pointer-events: none;
 }
 .popup-laurels img { height: 90px; width: auto; display: block; }
+
+.popup-festival-logos { display: flex; gap: 20px; align-items: center; margin-top: 24px; }
+.popup-festival-logos img { height: 90px; width: auto; display: block; }
 
 .popup-text-content {
     grid-column: 9 / span 4;
@@ -296,6 +299,7 @@ footer {
     .popup-video-container video { height: auto; object-fit: initial; }
     .popup-laurels { top: 12px; left: 12px; right: 12px; }
     .popup-laurels img { height: 50px; }
+    .popup-festival-logos img { height: 55px; }
     .popup-text-content { grid-column: 1 / -1; }
 
     .description-content { width: 100%; }
